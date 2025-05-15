@@ -1,0 +1,1096 @@
+{
+    "log": {
+        "level": "warn",
+        "output": "Nekobox.log",
+        "timestamp": true
+    },
+    "dns": {
+        "servers": [{
+                "tag": "google-dns",
+                "address": "tls://dns.google",
+                "address_resolver": "dns-local",
+                "address_strategy": "prefer_ipv4",
+                "strategy": "ipv4_only",
+                "detour": "Latency"
+            },
+            {
+                "tag": "dns-local",
+                "address": "local",
+                "address_resolver": "local",
+                "address_strategy": "prefer_ipv4",
+                "strategy": "ipv4_only"
+            },
+            {
+                "tag": "block-dns",
+                "address": "rcode://success",
+                "detour": "block"
+            }
+        ],
+        "rules": [{
+                "domain": [
+                    "quiz.int.vidio.com",
+                    "nontontv.vidio.com",
+                    "ava.game.naver.com",
+                    "investor.fb.com",
+                    "quiz.vidio.com",
+                    "investors.spotify.com",
+                    "nontontv.vidio.com"
+                ],
+                "action": "route",
+                "server": "dns-local"
+            },
+            {
+                "network": "udp",
+                "port": 443,
+                "action": "reject",
+                "method": "drop"
+            },
+            {
+                "domain": [
+                    "api.facebook.com",
+                    "fb.com",
+                    "www.facebook.com",
+                    "m.facebook.com",
+                    "gateway.facebook.com",
+                    "mqtt.c10r.facebook.com",
+                    "instagram.com",
+                    "graph.instagram.com",
+                    "i.instagram.com",
+                    "api.instagram.com",
+                    "edge-chat.instagram.com",
+                    "instagram.c10r.facebook.com",
+                    "star.c10r.facebook.com",
+                    "web.whatsapp.com",
+                    "www.whatsapp.com",
+                    "whatsapp.com",
+                    "chat.cdn.whatsapp.net",
+                    "business.whatsapp.com",
+                    "call.whatsapp.com",
+                    "v.whatsapp.com"
+                ],
+                "domain_regex": [
+                    ".*\\.(facebook|fbcdn|instagram|whatsapp)\\.(com|net)",
+                    ".*\\.messenger\\.com",
+                    ".*\\.meta\\.com"
+                ],
+                "action": "route",
+                "server": "dns-local"
+            },
+            {
+                "domain": [
+                    "yumiwolker.mayumiyui.workers.dev",
+                    "nautica.vokip29018.workers.dev",
+                    "nuclear.us.kg",
+                    "nautica.foolvpn.me",
+                    "yumicftigarun.web.id",
+                    "violetvpn.biz.id",
+                    "akun.bansos.biz.id",
+                    "siren.nayumiwandi.workers.dev",
+                    "free.xiongt.biz.id",
+                    "free.aloalo.my.id",
+                    "yumi.mayumiyui.workers.dev",
+                    "aink.workerz.site",
+                    "privasi.xhamster.biz.id",
+                    "afrcloud.site",
+                    "chat.openai.com"
+                ],
+                "action": "route",
+                "server": "google-dns"
+            },
+            {
+                "outbound": "Latency",
+                "action": "route",
+                "server": "google-dns",
+                "rewrite_ttl": 7200
+            },
+            {
+                "outbound": "Region",
+                "action": "route",
+                "server": "google-dns",
+                "rewrite_ttl": 7200
+            },
+            {
+                "outbound": "Ads-Ops",
+                "action": "route",
+                "server": "block-dns"
+            }
+        ],
+        "strategy": "ipv4_only",
+        "independent_cache": true
+    },
+    "inbounds": [{
+            "type": "tun",
+            "tag": "tun-in",
+            "interface_name": "tun0",
+            "mtu": 1490,
+            "address": [
+                "172.18.0.1/30",
+                "fdfe:dcba:9876::1/126"
+            ],
+            "auto_route": true,
+            "strict_route": true,
+            "stack": "gvisor",
+            "sniff": true,
+            "endpoint_independent_nat": true
+        },
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "0.0.0.0",
+            "listen_port": 2080,
+            "tcp_fast_open": true,
+            "sniff": true,
+            "sniff_override_destination": true
+        },
+        {
+            "type": "direct",
+            "tag": "direct-in",
+            "network": "tcp",
+            "override_address": "112.215.203.246",
+            "override_port": 53
+        }
+    ],
+    "outbounds": [{
+            "type": "selector",
+            "tag": "Internet",
+            "outbounds": [
+                "Latency",
+                "Region"
+            ],
+            "default": "Latency"
+        },
+        {
+            "type": "urltest",
+            "tag": "Latency",
+            "outbounds": [
+                "ID Akamai",
+                "ID Amzon 1",
+                "ID Amazon 2",
+                "ID Cayaga",
+                "SG Orecal Yumi",
+                "SG OHV Yumi",
+                "SG Tencen Yumi",
+                "SG Global Cloud",
+                "SG Tencen Nayumi",
+                "SG Orecal Nayumi",
+                "AE Europe Nayumi",
+                "SG M1 Siren",
+                "SG Alibaba Siren",
+                "SG CF Waro Siren",
+                "ID Amazon XioN",
+                "ID Akamai XioN",
+                "SG Amazon 1 Prod",
+                "SG Amazon 2 Prod",
+                "SG Amazon 3 Prod",
+                "SG Godady Prod",
+                "SG Regxa Cloud Novan",
+                "US Atlantic Novan",
+                "AE Europe Wilo",
+                "SG Godaddy Violet",
+                "SG Melbikomas Violet",
+                "SG Alibaba 1 Hoshino",
+                "SG Aibaba 2 Hoshino",
+                "SG Alibaba 3 Hoshino",
+                "SG Tencen 1 Hoshino",
+                "SG Akile 1 Hoshino",
+                "ID Amazon 1 Hoshino",
+                "ID Amazon 2 Hoshino",
+                "ID shiroko vmess",
+                "SG shiroko vmess",
+                "SG shiroko vless",
+                "SG shiroko trojan",
+                "SG vmess Yumi DEv",
+                "SG Yumi DEV"
+            ],
+            "url": "https://connectivitycheck.gstatic.com/generate_204",
+            "interval": "1m0s",
+            "tolerance": 50,
+            "idle_timeout": "5m0s"
+        },
+        {
+            "type": "selector",
+            "tag": "Region",
+            "outbounds": [
+                "ID Akamai",
+                "ID Amazon 2",
+                "AE Europe Wilo",
+                "SG Godaddy Violet",
+                "AE Europe Nayumi",
+                "SG Tencen Yumi",
+                "SG Yumi DEV"
+            ],
+            "default": "ID Akamai"
+        },
+        {
+            "type": "selector",
+            "tag": "Ads-Ops",
+            "outbounds": [
+                "block",
+                "Internet"
+            ]
+        },
+        {
+            "type": "selector",
+            "tag": "Rule-WA",
+            "outbounds": [
+                "direct-out",
+                "Internet"
+            ],
+            "default": "direct-out"
+        },
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block"
+        },
+        {
+            "type": "trojan",
+            "tag": "ID Akamai",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "password": "f6db143d-11e7-4c0f-b543-753a0bce5b73",
+            "tls": {
+                "enabled": true,
+                "server_name": "nautica.vokip29018.workers.dev"
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/172.232.239.151-587",
+                "headers": {
+                    "Host": "nautica.vokip29018.workers.dev"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "ID Amzon 1",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "password": "f6db143d-11e7-4c0f-b543-753a0bce5b73",
+            "tls": {
+                "enabled": true,
+                "server_name": "nautica.vokip29018.workers.dev"
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/43.218.77.16-1443",
+                "headers": {
+                    "Host": "nautica.vokip29018.workers.dev"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "ID Amazon 2",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "password": "f6db143d-11e7-4c0f-b543-753a0bce5b73",
+            "tls": {
+                "enabled": true,
+                "server_name": "nautica.vokip29018.workers.dev"
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/43.218.77.16-443",
+                "headers": {
+                    "Host": "nautica.vokip29018.workers.dev"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "ID Cayaga",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "password": "f6db143d-11e7-4c0f-b543-753a0bce5b73",
+            "tls": {
+                "enabled": true,
+                "server_name": "nautica.vokip29018.workers.dev"
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/203.194.112.119-8443",
+                "headers": {
+                    "Host": "nautica.vokip29018.workers.dev"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "SG Orecal Yumi",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "uuid": "7d96591e-db8f-49e4-8745-19329e9f1cb1",
+            "tls": {
+                "enabled": true,
+                "server_name": "yumi.mayumiyui.workers.dev"
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/152.69.221.114-23302",
+                "headers": {
+                    "Host": "yumi.mayumiyui.workers.dev"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "SG OHV Yumi",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "uuid": "7d96591e-db8f-49e4-8745-19329e9f1cb1",
+            "tls": {
+                "enabled": true,
+                "server_name": "yumi.mayumiyui.workers.dev"
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/15.235.199.103-2053",
+                "headers": {
+                    "Host": "yumi.mayumiyui.workers.dev"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "SG Tencen Yumi",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "password": "7d96591e-db8f-49e4-8745-19329e9f1cb1",
+            "tls": {
+                "enabled": true,
+                "server_name": "yumi.mayumiyui.workers.dev"
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/150.109.94.144-8900",
+                "headers": {
+                    "Host": "yumi.mayumiyui.workers.dev"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "SG Global Cloud",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "password": "080a768b-3849-47e5-9fea-54b3a96707cc",
+            "tls": {
+                "enabled": true,
+                "server_name": "nayumi.layanan-yumi.workers.dev"
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/164.52.2.99-443",
+                "headers": {
+                    "Host": "nayumi.layanan-yumi.workers.dev"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "SG Tencen Nayumi",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "password": "080a768b-3849-47e5-9fea-54b3a96707cc",
+            "tls": {
+                "enabled": true,
+                "server_name": "nayumi.layanan-yumi.workers.dev"
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/101.32.247.126-725",
+                "headers": {
+                    "Host": "nayumi.layanan-yumi.workers.dev"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "SG Orecal Nayumi",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "uuid": "080a768b-3849-47e5-9fea-54b3a96707cc",
+            "tls": {
+                "enabled": true,
+                "server_name": "nayumi.layanan-yumi.workers.dev"
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/129.150.50.21-44009",
+                "headers": {
+                    "Host": "nayumi.layanan-yumi.workers.dev"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "AE Europe Nayumi",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "password": "6a686ad7-1f8a-4441-9b71-383b27423f23",
+            "tls": {
+                "enabled": true,
+                "server_name": "nayumi.layanan-yumi.workers.dev"
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/176.97.67.38-443",
+                "headers": {
+                    "Host": "nayumi.layanan-yumi.workers.dev"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "SG M1 Siren",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "uuid": "9faf8d4c-aab1-4806-bb6f-1ab1bfa05ea4",
+            "tls": {
+                "enabled": true,
+                "server_name": "siren.nayumiwandi.workers.dev"
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/143.42.66.91-443",
+                "headers": {
+                    "Host": "siren.nayumiwandi.workers.dev"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "SG Alibaba Siren",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "password": "9faf8d4c-aab1-4806-bb6f-1ab1bfa05ea4",
+            "tls": {
+                "enabled": true,
+                "server_name": "siren.nayumiwandi.workers.dev"
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/8.219.59.132-48964",
+                "headers": {
+                    "Host": "siren.nayumiwandi.workers.dev"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "SG CF Waro Siren",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "uuid": "9faf8d4c-aab1-4806-bb6f-1ab1bfa05ea4",
+            "security": "auto",
+            "tls": {
+                "enabled": true,
+                "server_name": "siren.nayumiwandi.workers.dev",
+                "utls": {
+                    "enabled": true
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/138.2.74.219-28616",
+                "headers": {
+                    "Host": "siren.nayumiwandi.workers.dev"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "ID Amazon XioN",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "password": "aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1",
+            "tls": {
+                "enabled": true,
+                "server_name": "free.aloalo.my.id"
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/Free/TG-at-XionAlva/43.218.77.16-1443",
+                "headers": {
+                    "Host": "free.aloalo.my.id"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "ID Akamai XioN",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "password": "aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1",
+            "tls": {
+                "enabled": true,
+                "server_name": "free.xiongt.biz.id"
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/Free/TG-at-XionAlva/172.232.237.112-2053",
+                "headers": {
+                    "Host": "free.xiongt.biz.id"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "SG Amazon 1 Prod",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "password": "2bcfbfba-b446-4ad5-93ad-72af9e008f61",
+            "tls": {
+                "enabled": true,
+                "server_name": "nuclear.us.kg"
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/free/13.228.142.218:443",
+                "headers": {
+                    "Host": "nuclear.us.kg"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "SG Amazon 2 Prod",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "password": "2bcfbfba-b446-4ad5-93ad-72af9e008f61",
+            "tls": {
+                "enabled": true,
+                "server_name": "nuclear.us.kg"
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/free/13.228.155.72:443",
+                "headers": {
+                    "Host": "nuclear.us.kg"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "SG Amazon 3 Prod",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "uuid": "2bcfbfba-b446-4ad5-93ad-72af9e008f61",
+            "tls": {
+                "enabled": true,
+                "server_name": "nuclear.us.kg"
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/free/13.250.131.37:443",
+                "headers": {
+                    "Host": "nuclear.us.kg"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "SG Godady Prod",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "password": "2bcfbfba-b446-4ad5-93ad-72af9e008f61",
+            "tls": {
+                "enabled": true,
+                "server_name": "nuclear.biz.id"
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/free/97.74.82.87:45837",
+                "headers": {
+                    "Host": "nuclear.biz.id"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "SG Regxa Cloud Novan",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "uuid": "10489291-a336-40ac-a011-ab55cdf41ce0",
+            "tls": {
+                "enabled": true,
+                "server_name": "aink.workerz.site"
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/Novan-SG54",
+                "headers": {
+                    "Host": "aink.workerz.site"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "US Atlantic Novan",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "password": "c3f2a4c2-0892-4282-b866-b7ee9fb1ee28",
+            "tls": {
+                "enabled": true,
+                "server_name": "aink.workerz.site"
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/Novan-US4",
+                "headers": {
+                    "Host": "aink.workerz.site"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "AE Europe Wilo",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "uuid": "4e8b77e2-3c67-449f-9a82-9388cc966393",
+            "tls": {
+                "enabled": true,
+                "server_name": "wilo.luckystup-id.xyz"
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/38.180.11.201-443",
+                "headers": {
+                    "Host": "wilo.luckystup-id.xyz"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "SG Godaddy Violet",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "uuid": "39f84573-b534-453f-b2b1-9828108764b1",
+            "tls": {
+                "enabled": true,
+                "server_name": "violetvpn.biz.id"
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/sg-gody",
+                "headers": {
+                    "Host": "violetvpn.biz.id"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "SG Melbikomas Violet",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "uuid": "2464b772-5f2a-4ad0-af2c-2cfbbd2b2afc",
+            "tls": {
+                "enabled": true,
+                "server_name": "violetvpn.biz.id"
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/sg-melbi",
+                "headers": {
+                    "Host": "violetvpn.biz.id"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "SG Alibaba 1 Hoshino",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "password": "58e8a055-2cec-47ed-9e13-099019168169",
+            "tls": {
+                "enabled": true,
+                "server_name": "hoshino.hoshinoxyumi.workers.dev"
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/8.219.59.132-48964",
+                "headers": {
+                    "Host": "hoshino.hoshinoxyumi.workers.dev"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "SG Aibaba 2 Hoshino",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "password": "d742df4e-0737-4d2a-803a-9f824fd1192a",
+            "tls": {
+                "enabled": true,
+                "server_name": "hoshino.hoshinoxyumi.workers.dev"
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/47.245.91.197-9000",
+                "headers": {
+                    "Host": "hoshino.hoshinoxyumi.workers.dev"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "SG Alibaba 3 Hoshino",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "password": "fe60d029-fbee-4c59-9796-16a780240035",
+            "tls": {
+                "enabled": true,
+                "server_name": "hoshino.hoshinoxyumi.workers.dev"
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/8.219.77.72-5027",
+                "headers": {
+                    "Host": "hoshino.hoshinoxyumi.workers.dev"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "SG Tencen 1 Hoshino",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "password": "fe60d029-fbee-4c59-9796-16a780240035",
+            "tls": {
+                "enabled": true,
+                "server_name": "hoshino.hoshinoxyumi.workers.dev"
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/43.156.181.203-443",
+                "headers": {
+                    "Host": "hoshino.hoshinoxyumi.workers.dev"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "SG Akile 1 Hoshino",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "password": "fe60d029-fbee-4c59-9796-16a780240035",
+            "tls": {
+                "enabled": true,
+                "server_name": "hoshino.hoshinoxyumi.workers.dev"
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/185.81.28.95-30503",
+                "headers": {
+                    "Host": "hoshino.hoshinoxyumi.workers.dev"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "ID Amazon 1 Hoshino",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "password": "0b86d6c2-53ca-40a9-8daa-5af8e6d22d0d",
+            "tls": {
+                "enabled": true,
+                "server_name": "hoshino.hoshinoxyumi.workers.dev"
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/43.218.77.16-1443",
+                "headers": {
+                    "Host": "hoshino.hoshinoxyumi.workers.dev"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "ID Amazon 2 Hoshino",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "password": "0b86d6c2-53ca-40a9-8daa-5af8e6d22d0d",
+            "tls": {
+                "enabled": true,
+                "server_name": "hoshino.hoshinoxyumi.workers.dev"
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/43.218.77.16-443",
+                "headers": {
+                    "Host": "hoshino.hoshinoxyumi.workers.dev"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "ID shiroko vmess",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "uuid": "6affea6f-a412-44fa-8a9e-f2f1fb1f4fba",
+            "security": "auto",
+            "tls": {
+                "enabled": true,
+                "server_name": "shiroko.shirokoyumi.workers.dev",
+                "utls": {
+                    "enabled": true
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/ID",
+                "headers": {
+                    "Host": "shiroko.shirokoyumi.workers.dev"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "SG shiroko vmess",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "uuid": "6affea6f-a412-44fa-8a9e-f2f1fb1f4fba",
+            "security": "auto",
+            "tls": {
+                "enabled": true,
+                "server_name": "shiroko.shirokoyumi.workers.dev",
+                "utls": {
+                    "enabled": true
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/SG",
+                "headers": {
+                    "Host": "shiroko.shirokoyumi.workers.dev"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "SG shiroko vless",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "uuid": "6affea6f-a412-44fa-8a9e-f2f1fb1f4fba",
+            "tls": {
+                "enabled": true,
+                "server_name": "shiroko.shirokoyumi.workers.dev",
+                "insecure": false,
+                "disable_sni": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/SG",
+                "headers": {
+                    "Host": "shiroko.shirokoyumi.workers.dev"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "SG shiroko trojan",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "password": "6affea6f-a412-44fa-8a9e-f2f1fb1f4fba",
+            "tls": {
+                "enabled": true,
+                "server_name": "shiroko.shirokoyumi.workers.dev"
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/SG",
+                "headers": {
+                    "Host": "shiroko.shirokoyumi.workers.dev"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "SG vmess Yumi DEv",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "uuid": "eab8e42d-8a6a-46c5-b21b-b85bcabe6d32",
+            "security": "auto",
+            "tls": {
+                "enabled": false,
+                "server_name": "siren.yumidev.workers.dev",
+                "utls": {
+                    "enabled": true
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/SG",
+                "headers": {
+                    "Host": "siren.yumidev.workers.dev"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "SG Yumi DEV",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "password": "eab8e42d-8a6a-46c5-b21b-b85bcabe6d32",
+            "tls": {
+                "enabled": true,
+                "server_name": "siren.yumidev.workers.dev"
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/SG",
+                "headers": {
+                    "Host": "siren.yumidev.workers.dev"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [{
+                "type": "logical",
+                "mode": "or",
+                "rules": [{
+                        "protocol": "dns"
+                    },
+                    {
+                        "port": 53
+                    }
+                ],
+                "action": "hijack-dns"
+            },
+            {
+                "rule_set": [
+                    "geosite-rule-ads",
+                    "Ads-Adaway",
+                    "Ads-Abpindo",
+                    "Ads-PornIndo"
+                ],
+                "outbound": "Ads-Ops",
+                "action": "route"
+            },
+            {
+                "domain": "youtube.com",
+                "action": "route",
+                "outbound": "Internet"
+            },
+            {
+                "domain_suffix": [
+                    "fna.whatsapp.net",
+                    "wa.me",
+                    "whatsapp-plus.info",
+                    "whatsapp-plus.me",
+                    "whatsapp-plus.net",
+                    "whatsapp.cc",
+                    "whatsapp.com",
+                    "whatsapp.info",
+                    "whatsapp.net",
+                    "whatsapp.org",
+                    "whatsapp.tv",
+                    "whatsappbrand.com"
+                ],
+                "action": "route",
+                "outbound": "Rule-WA"
+            },
+            {
+                "ip_is_private": true,
+                "action": "route",
+                "outbound": "Internet"
+            },
+            {
+                "rule_set": "GeoIp-Id",
+                "action": "route",
+                "outbound": "Internet"
+            }
+        ],
+        "rule_set": [{
+                "type": "remote",
+                "tag": "geosite-rule-ads",
+                "format": "binary",
+                "url": "https://github.com/dickymuliafiqri/sing-box-examples/releases/download/latest/geosite-rule-ads.srs",
+                "download_detour": "Internet"
+            },
+            {
+                "type": "remote",
+                "tag": "Ads-Adaway",
+                "format": "binary",
+                "url": "https://github.com/Mayumiwandi/Lecilia/raw/refs/heads/main/Sing-box/adaway.srs",
+                "download_detour": "Internet"
+            },
+            {
+                "type": "remote",
+                "tag": "Ads-Abpindo",
+                "format": "binary",
+                "url": "https://github.com/Mayumiwandi/Lecilia/raw/refs/heads/main/Sing-box/abpindo.srs",
+                "download_detour": "Internet"
+            },
+            {
+                "type": "remote",
+                "tag": "Ads-PornIndo",
+                "format": "binary",
+                "url": "https://github.com/Mayumiwandi/Lecilia/raw/refs/heads/main/Sing-box/pornholeindo.srs",
+                "download_detour": "Internet"
+            },
+            {
+                "type": "remote",
+                "tag": "GeoIp-Id",
+                "format": "binary",
+                "url": "https://github.com/Loyalsoldier/geoip/raw/refs/heads/release/srs/id.srs",
+                "download_detour": "Internet"
+            }
+        ],
+        "final": "Internet",
+        "auto_detect_interface": true
+    },
+    "experimental": {
+        "clash_api": {
+            "external_controller": "0.0.0.0:9090",
+            "external_ui": "dist",
+            "external_ui_download_url": "https://github.com/Zephyruso/zashboard/releases/latest/download/dist-cdn-fonts.zip",
+            "external_ui_download_detour": "Internet",
+            "default_mode": "rule",
+            "access_control_allow_origin": "*"
+        }
+    }
+}
