@@ -16,6 +16,14 @@
         "detour": "Latency"
       },
       {
+        "tag": "cloudflare-dns",
+        "address": "tls://one.one.one.one",
+        "address_resolver": "dns-local",
+        "address_strategy": "prefer_ipv4",
+        "strategy": "ipv4_only",
+        "detour": "Latency"
+      },
+      {
         "tag": "dns-local",
         "address": "local",
         "address_resolver": "local",
@@ -75,7 +83,7 @@
           ".*\\.messenger\\.com",
           ".*\\.meta\\.com"
         ],
-        "server": "dns-local"
+        "server": "cloudflare-dns"
       },
       {
         "domain": [
