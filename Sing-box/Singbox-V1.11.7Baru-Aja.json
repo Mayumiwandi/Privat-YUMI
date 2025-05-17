@@ -96,7 +96,7 @@
           "geosite-instagram"
         ],
         "outbound": "Latency",
-        "action": "resolve",
+        "action": "route",
         "server": "google-dns",
         "strategy": "prefer_ipv4",
         "rewrite_ttl": 7200
