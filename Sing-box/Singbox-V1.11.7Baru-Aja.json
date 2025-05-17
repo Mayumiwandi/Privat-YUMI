@@ -57,36 +57,6 @@
       },
       {
         "domain": [
-          "api.facebook.com",
-          "fb.com",
-          "www.facebook.com",
-          "m.facebook.com",
-          "gateway.facebook.com",
-          "mqtt.c10r.facebook.com",
-          "instagram.com",
-          "graph.instagram.com",
-          "i.instagram.com",
-          "api.instagram.com",
-          "edge-chat.instagram.com",
-          "instagram.c10r.facebook.com",
-          "star.c10r.facebook.com",
-          "web.whatsapp.com",
-          "www.whatsapp.com",
-          "whatsapp.com",
-          "chat.cdn.whatsapp.net",
-          "business.whatsapp.com",
-          "call.whatsapp.com",
-          "v.whatsapp.com"
-        ],
-        "domain_regex": [
-          ".*\\.(facebook|fbcdn|instagram|whatsapp)\\.(com|net)",
-          ".*\\.messenger\\.com",
-          ".*\\.meta\\.com"
-        ],
-        "server": "cloudflare-dns"
-      },
-      {
-        "domain": [
           "yumiwolker.mayumiyui.workers.dev",
           "nautica.vokip29018.workers.dev",
           "nuclear.us.kg",
@@ -103,7 +73,8 @@
           "afrcloud.site",
           "chat.openai.com"
         ],
-        "server": "google-dns"
+        "server": "google-dns",
+        "action": "resolve"
       },
       {
         "outbound": "Latency",
@@ -118,6 +89,33 @@
       {
         "outbound": "Ads-Ops",
         "server": "block-dns"
+      },
+      {
+        "rule_set": [
+          "geosite-facebook",
+          "geosite-instagram"
+        ],
+        "outbound": "Latency",
+        "action": "resolve",
+        "server": "google-dns",
+        "strategy": "prefer_ipv4",
+        "rewrite_ttl": 7200
+      }
+    ],
+    "rule_set": [
+      {
+        "type": "remote",
+        "tag": "geosite-facebook",
+        "format": "source",
+        "url": "https://github.com/malikshi/sing-box-geo/raw/refs/heads/rule-set-geosite/geosite-facebook.srs",
+        "download_detour": "Internet"
+      },
+      {
+        "type": "remote",
+        "tag": "geosite-instagram",
+        "format": "source",
+        "url": "https://github.com/malikshi/sing-box-geo/raw/refs/heads/rule-set-geosite/geosite-instagram.srs",
+        "download_detour": "Internet"
       }
     ],
     "strategy": "ipv4_only",
@@ -187,7 +185,7 @@
         "SG Global Cloud",
         "SG Tencen Nayumi",
         "SG Orecal Nayumi",
-        "AE Europe Nayumi",
+        "MY Kaopu Nayumi",
         "SG M1 Siren",
         "SG Alibaba Siren",
         "SG CF Waro Siren",
@@ -199,7 +197,7 @@
         "SG Godady Prod",
         "SG Regxa Cloud Novan",
         "US Atlantic Novan",
-        "AE Europe Wilo",
+        "SG Alibaba Wilo",
         "SG Godaddy Violet",
         "SG Melbikomas Violet",
         "SG Alibaba 1 Hoshino",
@@ -227,9 +225,9 @@
       "outbounds": [
         "ID Akamai",
         "ID Amazon 2",
-        "AE Europe Wilo",
+        "SG Alibaba Wilo",
         "SG Godaddy Violet",
-        "AE Europe Nayumi",
+        "MY Kaopu Nayumi",
         "SG Tencen Yumi",
         "SG Yumi DEV"
       ],
@@ -452,7 +450,7 @@
     },
     {
       "type": "trojan",
-      "tag": "AE Europe Nayumi",
+      "tag": "MY Kaopu Nayumi",
       "tcp_fast_open": true,
       "server": "plus-store.naver.com",
       "server_port": 443,
@@ -463,7 +461,7 @@
       },
       "transport": {
         "type": "ws",
-        "path": "/176.97.67.38-443",
+        "path": "/38.60.195.203-10478",
         "headers": {
           "Host": "nayumi.layanan-yumi.workers.dev"
         }
@@ -684,7 +682,7 @@
     },
     {
       "type": "vless",
-      "tag": "AE Europe Wilo",
+      "tag": "SG Alibaba Wilo",
       "tcp_fast_open": true,
       "server": "plus-store.naver.com",
       "server_port": 443,
@@ -695,7 +693,7 @@
       },
       "transport": {
         "type": "ws",
-        "path": "/38.180.11.201-443",
+        "path": "/8.219.77.72-5027",
         "headers": {
           "Host": "wilo.luckystup-id.xyz"
         }
@@ -972,7 +970,7 @@
       },
       "transport": {
         "type": "ws",
-        "path": "/ID",
+        "path": "/43.218.77.16-1443",
         "headers": {
           "Host": "siren.yumidev.workers.dev"
         }
@@ -1056,30 +1054,35 @@
       {
         "type": "remote",
         "tag": "geosite-rule-ads",
+        "format": "source",
         "url": "https://github.com/dickymuliafiqri/sing-box-examples/releases/download/latest/geosite-rule-ads.srs",
         "download_detour": "Internet"
       },
       {
         "type": "remote",
         "tag": "Ads-Adaway",
+        "format": "source",
         "url": "https://github.com/Mayumiwandi/Lecilia/raw/refs/heads/main/Sing-box/adaway.srs",
         "download_detour": "Internet"
       },
       {
         "type": "remote",
         "tag": "Ads-Abpindo",
+        "format": "source",
         "url": "https://github.com/Mayumiwandi/Lecilia/raw/refs/heads/main/Sing-box/abpindo.srs",
         "download_detour": "Internet"
       },
       {
         "type": "remote",
         "tag": "Ads-PornIndo",
+        "format": "source",
         "url": "https://github.com/Mayumiwandi/Lecilia/raw/refs/heads/main/Sing-box/pornholeindo.srs",
         "download_detour": "Internet"
       },
       {
         "type": "remote",
         "tag": "GeoIp-Id",
+        "format": "source",
         "url": "https://github.com/Loyalsoldier/geoip/raw/refs/heads/release/srs/id.srs",
         "download_detour": "Internet"
       }
