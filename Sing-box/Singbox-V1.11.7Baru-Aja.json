@@ -944,7 +944,7 @@
         "server": "plus-store.naver.com",
         "server_port": 443,
         "uuid": "eab8e42d-8a6a-46c5-b21b-b85bcabe6d32",
-        "security": "auto",
+        "security": "zero",
         "tls": {
           "server_name": "siren.yumidev.workers.dev",
           "utls": {
