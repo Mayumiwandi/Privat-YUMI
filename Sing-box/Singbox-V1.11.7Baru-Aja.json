@@ -101,22 +101,6 @@
         "rewrite_ttl": 7200
       }
     ],
-    "rule_set": [
-      {
-        "type": "remote",
-        "tag": "geosite-facebook",
-        "format": "source",
-        "url": "https://github.com/malikshi/sing-box-geo/raw/refs/heads/rule-set-geosite/geosite-facebook.srs",
-        "download_detour": "Internet"
-      },
-      {
-        "type": "remote",
-        "tag": "geosite-instagram",
-        "format": "source",
-        "url": "https://github.com/malikshi/sing-box-geo/raw/refs/heads/rule-set-geosite/geosite-instagram.srs",
-        "download_detour": "Internet"
-      }
-    ],
     "strategy": "ipv4_only",
     "independent_cache": true
   },
@@ -1083,6 +1067,20 @@
         "tag": "GeoIp-Id",
         "format": "source",
         "url": "https://github.com/Loyalsoldier/geoip/raw/refs/heads/release/srs/id.srs",
+        "download_detour": "Internet"
+      },
+      {
+        "type": "remote",
+        "tag": "geosite-facebook",
+        "format": "source",
+        "url": "https://github.com/malikshi/sing-box-geo/raw/refs/heads/rule-set-geosite/geosite-facebook.srs",
+        "download_detour": "Internet"
+      },
+      {
+        "type": "remote",
+        "tag": "geosite-instagram",
+        "format": "source",
+        "url": "https://github.com/malikshi/sing-box-geo/raw/refs/heads/rule-set-geosite/geosite-instagram.srs",
         "download_detour": "Internet"
       }
     ],
