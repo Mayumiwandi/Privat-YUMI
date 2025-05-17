@@ -1041,8 +1041,7 @@
           "direct-in"
         ],
         "outbound": "direct-out",
-        "action": "route",
-        "server": "dns-local"
+        "action": "route"
       }
     ],
     "rule_set": [
