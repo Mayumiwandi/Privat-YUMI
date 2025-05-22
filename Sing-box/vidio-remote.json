@@ -219,7 +219,7 @@
                 "JP racle alicia",
                 "GB OVHcloud alicia"
             ],
-            "default": "ID Akamai"
+            "default": "SG Cloudflare alicia"
         },
         {
             "type": "urltest",
