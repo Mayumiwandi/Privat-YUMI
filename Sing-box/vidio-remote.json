@@ -102,7 +102,7 @@
                 "rewrite_ttl": 7200
             },
             {
-                "domain_sufix": [
+                "domain_suffix": [
                     "dailymotion.com",
                     "maki.my.id",
                     "kuramanime.run",
@@ -1141,7 +1141,7 @@
             },
             {
                 "ip_is_private": true,
-                "domain_sufix": [
+                "domain_suffix": [
                     "dailymotion.com",
                     "maki.my.id",
                     "kuramanime.run",
