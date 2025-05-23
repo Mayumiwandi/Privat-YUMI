@@ -206,7 +206,7 @@
             ],
             "url": "https://connectivitycheck.gstatic.com/generate_204",
             "interval": "1m0s",
-            "tolerance": 40,
+            "tolerance": 50,
             "idle_timeout": "5m0s"
         },
         {
@@ -240,9 +240,9 @@
                 "ID 2 Amazon megumin",
                 "ID 1 Cagayan megumin"
             ],
-            "url": "https://connectivitycheck.gstatic.com/generate_204",
+            "url": "https:dns.google",
             "interval": "1m0s",
-            "tolerance": 40,
+            "tolerance": 50,
             "idle_timeout": "5m0s"
         },
         {
