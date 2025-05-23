@@ -240,7 +240,7 @@
                 "ID 2 Amazon megumin",
                 "ID 1 Cagayan megumin"
             ],
-            "url": "https:dns.google",
+            "url": "https://connectivitycheck.gstatic.com/generate_204",
             "interval": "1m0s",
             "tolerance": 50,
             "idle_timeout": "5m0s"
