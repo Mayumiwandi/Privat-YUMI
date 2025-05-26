@@ -72,7 +72,8 @@
                     "siren.nayumiwandi.workers.dev",
                     "siren.yumidev.workers.dev",
                     "yumiwolker.mayumiyui.workers.dev",
-                    "nautica.vokip29018.workers.dev"
+                    "nautica.vokip29018.workers.dev",
+                    "maquia.jayecyumi.workers.dev"
                 ],
                 "server": "google-dns",
                 "action": "route"
@@ -206,7 +207,7 @@
             ],
             "url": "https://connectivitycheck.gstatic.com/generate_204",
             "interval": "1m0s",
-            "tolerance": 50,
+            "tolerance": 60,
             "idle_timeout": "5m0s"
         },
         {
@@ -238,7 +239,13 @@
                 "ID 1 Akamai megumin",
                 "ID 1 Amazon megumin",
                 "ID 2 Amazon megumin",
-                "ID 1 Cagayan megumin"
+                "ID 1 Cagayan megumin",
+                "ID Maquia Aws",
+                "ID Cayaga Maquia",
+                "ID IP Cayaga 1 Maquia notls",
+                "ID IP Cayaga 1 Maquia TLS",
+                "SG IP Orecle Cloud 1 Maquia TLS",
+                "SG Tencent Cloud Maquia"
             ],
             "url": "https://connectivitycheck.gstatic.com/generate_204",
             "interval": "1m0s",
@@ -1115,6 +1122,139 @@
                     "Host": "mayumikawai.my.id"
                 }
             }
+        },
+        {
+            "type": "vmess",
+            "tag": "ID Maquia Aws",
+            "server": "support.vidio.com",
+            "server_port": 443,
+            "uuid": "7209ff68-d4e8-4f8b-b7e5-c1e241316870",
+            "security": "auto",
+            "tls": {
+                "enabled": true,
+                "server_name": "maquia.jayecyumi.workers.dev",
+                "utls": {
+                    "enabled": true
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/43.218.77.16-1443",
+                "headers": {
+                    "Host": "maquia.jayecyumi.workers.dev"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "ID Cayaga Maquia",
+            "server": "support.vidio.com",
+            "server_port": 443,
+            "uuid": "7209ff68-d4e8-4f8b-b7e5-c1e241316870",
+            "security": "auto",
+            "tls": {
+                "enabled": true,
+                "server_name": "maquia.jayecyumi.workers.dev",
+                "utls": {
+                    "enabled": true
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/203.194.112.119-2053",
+                "headers": {
+                    "Host": "maquia.jayecyumi.workers.dev"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "ID IP Cayaga 1 Maquia notls",
+            "server": "172.66.0.145",
+            "server_port": 80,
+            "uuid": "7209ff68-d4e8-4f8b-b7e5-c1e241316870",
+            "security": "auto",
+            "tls": {
+                "enabled": false,
+                "server_name": "maquia.jayecyumi.workers.dev",
+                "utls": {
+                    "enabled": true
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/203.194.112.119-2053",
+                "headers": {
+                    "Host": "maquia.jayecyumi.workers.dev"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "ID IP Cayaga 1 Maquia TLS",
+            "server": "172.66.0.145",
+            "server_port": 443,
+            "uuid": "7209ff68-d4e8-4f8b-b7e5-c1e241316870",
+            "security": "auto",
+            "tls": {
+                "enabled": true,
+                "server_name": "maquia.jayecyumi.workers.dev",
+                "utls": {
+                    "enabled": true
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/203.194.112.119-2053",
+                "headers": {
+                    "Host": "maquia.jayecyumi.workers.dev"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "SG IP Orecle Cloud 1 Maquia TLS",
+            "server": "172.66.0.145",
+            "server_port": 443,
+            "uuid": "7209ff68-d4e8-4f8b-b7e5-c1e241316870",
+            "security": "auto",
+            "tls": {
+                "enabled": true,
+                "server_name": "maquia.jayecyumi.workers.dev",
+                "utls": {
+                    "enabled": true
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/152.69.221.144-23302",
+                "headers": {
+                    "Host": "maquia.jayecyumi.workers.dev"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "SG Tencent Cloud Maquia",
+            "tcp_fast_open": true,
+            "server": "support.vidio.com",
+            "server_port": 443,
+            "uuid": "7209ff68-d4e8-4f8b-b7e5-c1e241316870",
+            "security": "auto",
+            "tls": {
+                "enabled": true,
+                "server_name": "maquia.jayecyumi.workers.dev",
+                "utls": {
+                    "enabled": true
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/43.156.181.203-443",
+                "headers": {
+                    "Host": "maquia.jayecyumi.workers.dev"
+                }
+            }
         }
     ],
     "route": {
@@ -1147,7 +1287,8 @@
                     "kuramanime.run",
                     "filemoon.sx",
                     "mega.co.nz",
-                    "ghbrisk.com"
+                    "ghbrisk.com",
+                    "facebook.com"
                 ],
                 "rule_set": [
                     "geosite-youtube",
