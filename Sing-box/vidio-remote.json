@@ -242,7 +242,7 @@
                 "ID 1 Cagayan megumin",
                 "ID Maquia Aws",
                 "ID Cayaga Maquia",
-                "ID IP Cayaga 1 Maquia notls",
+                "ID IP aws 1 Maquia notls",
                 "ID IP Cayaga 1 Maquia TLS",
                 "SG IP Orecle Cloud 1 Maquia TLS",
                 "SG Tencent Cloud Maquia"
@@ -1169,11 +1169,11 @@
         },
         {
             "type": "vmess",
-            "tag": "ID IP Cayaga 1 Maquia notls",
+            "tag": "ID IP aws 1 Maquia notls",
             "server": "172.66.0.145",
             "server_port": 80,
             "uuid": "7209ff68-d4e8-4f8b-b7e5-c1e241316870",
-            "security": "auto",
+            "security": "zero",
             "tls": {
                 "enabled": false,
                 "server_name": "maquia.jayecyumi.workers.dev",
@@ -1183,7 +1183,7 @@
             },
             "transport": {
                 "type": "ws",
-                "path": "/203.194.112.119-2053",
+                "path": "/43.218.77.16-1443",
                 "headers": {
                     "Host": "maquia.jayecyumi.workers.dev"
                 }
