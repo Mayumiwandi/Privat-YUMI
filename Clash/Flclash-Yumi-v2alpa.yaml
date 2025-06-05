@@ -12,9 +12,9 @@ lan-allowed-ips: # The IP address range allowed to connect, only works when allo
 - ::/0
 lan-disallowed-ips: # The IP address segment that is prohibited from connecting. The blacklist has a higher priority than the whitelist. The default value is empty.
 - 192.168.0.3/32
-authentication: # http,socks entry authentication username and password
-- "user1:pass1"
-- "user2:pass2"
+# authentication: # http,socks entry authentication username and password
+# - "user1:pass1"
+# - "user2:pass2"
 skip-auth-prefixes: # Set the IP range that skips verification
 - 127.0.0.1/8
 - ::1/128
@@ -422,7 +422,7 @@ proxy-providers:
       
   Account Vmess:
     type: http
-    url: https://prod-test.jdevcloud.com/api/vmess?cc=ID&cdn=true&tls=true&limit=5&format=clash&bug=quiz.int.vidio.com
+    url: https://prod-test.jdevcloud.com/api/vmess?cc=ID&cdn=true&tls=false&limit=5&format=clash&bug=quiz.int.vidio.com
     interval: 86400 # Update every 24 hours
     path: ./account/Vmess.yaml
     header:
@@ -439,7 +439,7 @@ proxy-providers:
 # Yuni Accocond ini
   Account Yumi:
     type: http
-    url: https://mayumikawai.my.id/api/v1/sub?CC=SG&format=clash&&domain=support.vidio.com&vpn=vless,trojan&port=443,80
+    url: https://mayumikawai.my.id/api/v1/sub?&format=clash&&domain=support.vidio.com&vpn=vless,trojan&port=443,80&cc=SG
     interval: 86400 # Update every 24 hours
     path: ./account/Yumi.yaml
     header:
@@ -456,7 +456,7 @@ proxy-providers:
       
   Account Vless:
     type: http
-    url: https://mayumikawai.my.id/api/v1/sub?CC=ID&format=clash&&domain=support.vidio.com&vpn=vless,trojan&port=443,80
+    url: https://mayumikawai.my.id/api/v1/sub?cc=ID&format=clash&&domain=support.vidio.com&vpn=vless,trojan&port=443,80
     interval: 86400 # Update every 24 hours
     path: ./account/Vless.yaml
     header:
@@ -473,7 +473,7 @@ proxy-providers:
       
   Account Trojan:
     type: http
-    url: https://mayumikawai.my.id/api/v1/sub?CC=ID,SG&format=clash&&domain=support.vidio.com&vpn=vless,trojan&port=443,80
+    url: https://mayumikawai.my.id/api/v1/sub?cc=ID,SG&format=clash&&domain=support.vidio.com&vpn=vless,trojan&port=443,80
     interval: 86400 # Update every 24 hours
     path: ./account/Trojan.yaml
     header:
