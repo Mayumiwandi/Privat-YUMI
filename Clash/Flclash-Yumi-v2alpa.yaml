@@ -1,7 +1,7 @@
 port: 2080
 socks-port: 2080
-redir-port: 9797
-mixed-port: 7893
+redir-port: 2080
+mixed-port: 2099
 tproxy-port: 9898
 ipv6: true
 mode: rule
@@ -440,7 +440,7 @@ proxy-providers:
   Account Yumi:
     type: http
     url: https://mayumikawai.my.id/api/v1/sub?&format=clash&&domain=support.vidio.com&vpn=vless,trojan&port=443,80&cc=SG
-    interval: 86400 # Update every 24 hours
+    interval: 21600 # Update every 24 hours
     path: ./account/Yumi.yaml
     header:
       User-Agent:
