@@ -422,7 +422,7 @@ proxy-providers:
       
   Account Vmess:
     type: http
-    url: https://prod-test.jdevcloud.com/api/vmess?cc=ID&cdn=true&tls=false&limit=5&format=clash&bug=quiz.int.vidio.com
+    url: https://raw.githubusercontent.com/Mayumiwandi/Privat-YUMI/refs/heads/main/Clash/akun/vmess.yaml
     interval: 86400 # Update every 24 hours
     path: ./account/Vmess.yaml
     header:
