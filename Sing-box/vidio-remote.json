@@ -128,7 +128,7 @@
             "type": "tun",
             "tag": "tun-in",
             "interface_name": "tunelm0n",
-            "mtu": 1490,
+            "mtu": 1590,
             "address": [
                 "172.18.0.1/30",
                 "fdfe:dcba:9876::1/126"
@@ -1129,7 +1129,7 @@
             "server": "support.vidio.com",
             "server_port": 443,
             "uuid": "7209ff68-d4e8-4f8b-b7e5-c1e241316870",
-            "security": "auto",
+            "security": "zero",
             "tls": {
                 "enabled": true,
                 "server_name": "maquia.jayecyumi.workers.dev",
@@ -1151,7 +1151,7 @@
             "server": "support.vidio.com",
             "server_port": 443,
             "uuid": "7209ff68-d4e8-4f8b-b7e5-c1e241316870",
-            "security": "auto",
+            "security": "zero",
             "tls": {
                 "enabled": true,
                 "server_name": "maquia.jayecyumi.workers.dev",
@@ -1195,7 +1195,7 @@
             "server": "172.66.0.145",
             "server_port": 443,
             "uuid": "7209ff68-d4e8-4f8b-b7e5-c1e241316870",
-            "security": "auto",
+            "security": "zero",
             "tls": {
                 "enabled": true,
                 "server_name": "maquia.jayecyumi.workers.dev",
@@ -1217,7 +1217,7 @@
             "server": "172.66.0.145",
             "server_port": 443,
             "uuid": "7209ff68-d4e8-4f8b-b7e5-c1e241316870",
-            "security": "auto",
+            "security": "zero",
             "tls": {
                 "enabled": true,
                 "server_name": "maquia.jayecyumi.workers.dev",
@@ -1240,7 +1240,7 @@
             "server": "support.vidio.com",
             "server_port": 443,
             "uuid": "7209ff68-d4e8-4f8b-b7e5-c1e241316870",
-            "security": "auto",
+            "security": "zero",
             "tls": {
                 "enabled": true,
                 "server_name": "maquia.jayecyumi.workers.dev",
@@ -1301,19 +1301,8 @@
                 "action": "route"
             },
             {
-                "domain_suffix": [
-                    "fna.whatsapp.net",
-                    "wa.me",
-                    "whatsapp-plus.info",
-                    "whatsapp-plus.me",
-                    "whatsapp-plus.net",
-                    "whatsapp.cc",
-                    "whatsapp.com",
-                    "whatsapp.info",
-                    "whatsapp.net",
-                    "whatsapp.org",
-                    "whatsapp.tv",
-                    "whatsappbrand.com"
+                "rule_set": [
+                    "geosite-wa"
                 ],
                 "outbound": "Rule-WA",
                 "ip_is_private": true
@@ -1397,6 +1386,13 @@
                 "format": "binary",
                 "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo-lite/geosite/openai.srs",
                 "download_detour": "Internet"
+            },
+            {
+                "type": "remote",
+                "tag": "geosite-wa",
+                "format": "binary",
+                "url": "https://github.com/Mayumiwandi/Lecilia/raw/refs/heads/main/Sing-box/rule-wa.srs",
+                "download_detour": "Internet"
             }
         ],
         "final": "Internet",
@@ -1404,7 +1400,7 @@
     },
     "experimental": {
         "clash_api": {
-            "external_controller": "0.0.0.0:9090",
+            "external_controller": "0.0.0.0:9091",
             "external_ui": "dist",
             "external_ui_download_url": "https://github.com/Zephyruso/zashboard/releases/latest/download/dist-cdn-fonts.zip",
             "external_ui_download_detour": "Internet",
