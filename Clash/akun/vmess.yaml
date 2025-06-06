@@ -5,7 +5,7 @@ proxies:
     type: vmess
     uuid: 7209ff68-d4e8-4f8b-b7e5-c1e241316870
     alterId: 0
-    cipher: auto
+    cipher: zero
     tls: true
     skip-cert-verify: true
     servername: maquia.jayecyumi.workers.dev
@@ -23,7 +23,7 @@ proxies:
     type: vmess
     uuid: 7209ff68-d4e8-4f8b-b7e5-c1e241316870
     alterId: 0
-    cipher: auto
+    cipher: zero
     tls: true
     skip-cert-verify: true
     servername: maquia.jayecyumi.workers.dev
@@ -41,7 +41,7 @@ proxies:
     type: vmess
     uuid: 7209ff68-d4e8-4f8b-b7e5-c1e241316870
     alterId: 0
-    cipher: auto
+    cipher: zero
     tls: true
     skip-cert-verify: true
     servername: maquia.jayecyumi.workers.dev
@@ -59,7 +59,7 @@ proxies:
     type: vmess
     uuid: 7209ff68-d4e8-4f8b-b7e5-c1e241316870
     alterId: 0
-    cipher: auto
+    cipher: zero
     tls: true
     skip-cert-verify: true
     servername: maquia.jayecyumi.workers.dev
@@ -77,7 +77,7 @@ proxies:
     type: vmess
     uuid: 7209ff68-d4e8-4f8b-b7e5-c1e241316870
     alterId: 0
-    cipher: auto
+    cipher: zero
     tls: true
     skip-cert-verify: true
     servername: maquia.jayecyumi.workers.dev
