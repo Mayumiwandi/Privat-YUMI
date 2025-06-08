@@ -15,14 +15,6 @@
                 "detour": "Latency"
             },
             {
-                "tag": "cloudflare-dns",
-                "address": "tls://one.one.one.one",
-                "address_resolver": "dns-local",
-                "address_strategy": "prefer_ipv4",
-                "strategy": "ipv4_only",
-                "detour": "Latency"
-            },
-            {
                 "tag": "dns-local",
                 "address": "local",
                 "address_resolver": "local",
@@ -94,7 +86,9 @@
             },
             {
                 "rule_set": [
-                    "geosite-facebook",
+                    "geosite-facebook1",
+                    "geoip-facebook2",
+                    "geosite-facebook3",
                     "geosite-instagram"
                 ],
                 "outbound": "Internet",
@@ -113,7 +107,8 @@
                 ],
                 "rule_set": [
                     "geosite-youtube",
-                    "geosite-openai"
+                    "geosite-openai",
+                    "geosite-google"
                 ],
                 "outbound": "Streaming",
                 "action": "route",
@@ -1287,12 +1282,12 @@
                     "kuramanime.run",
                     "filemoon.sx",
                     "mega.co.nz",
-                    "ghbrisk.com",
-                    "facebook.com"
+                    "ghbrisk.com"
                 ],
                 "rule_set": [
                     "geosite-youtube",
-                    "geosite-openai"
+                    "geosite-openai",
+                    "geosite-google"
                 ],
                 "inbound": [
                     "direct-in"
@@ -1314,8 +1309,11 @@
             },
             {
                 "rule_set": [
-                    "geosite-facebook",
-                    "geosite-instagram"
+                    "geosite-facebook1",
+                    "geoip-facebook2",
+                    "geosite-facebook3",
+                    "geosite-instagram",
+                    "geosite-discord"
                 ],
                 "inbound": [
                     "direct-in"
@@ -1361,9 +1359,23 @@
             },
             {
                 "type": "remote",
-                "tag": "geosite-facebook",
+                "tag": "geosite-facebook1",
                 "format": "binary",
                 "url": "https://github.com/malikshi/sing-box-geo/raw/refs/heads/rule-set-geosite/geosite-facebook.srs",
+                "download_detour": "Internet"
+            },
+            {
+                "type": "remote",
+                "tag": "geoip-facebook2",
+                "format": "binary",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo-lite/geoip/facebook.srs",
+                "download_detour": "Internet"
+            },
+            {
+                "type": "remote",
+                "tag": "geosite-facebook3",
+                "format": "binary",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/facebook.srs",
                 "download_detour": "Internet"
             },
             {
@@ -1392,6 +1404,20 @@
                 "tag": "geosite-wa",
                 "format": "binary",
                 "url": "https://github.com/Mayumiwandi/Lecilia/raw/refs/heads/main/Sing-box/rule-wa.srs",
+                "download_detour": "Internet"
+            },
+            {
+                "type": "remote",
+                "tag": "geosite-google",
+                "format": "binary",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo-lite/geosite/google.srs",
+                "download_detour": "Internet"
+            },
+            {
+                "type": "remote",
+                "tag": "geosite-discord",
+                "format": "binary",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/discord.srs",
                 "download_detour": "Internet"
             }
         ],
