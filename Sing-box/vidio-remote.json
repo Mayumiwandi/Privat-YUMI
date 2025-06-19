@@ -65,7 +65,8 @@
                     "siren.yumidev.workers.dev",
                     "yumiwolker.mayumiyui.workers.dev",
                     "nautica.vokip29018.workers.dev",
-                    "maquia.jayecyumi.workers.dev"
+                    "maquia.jayecyumi.workers.dev",
+                    "layla.mayumiyui.my.id"
                 ],
                 "server": "google-dns",
                 "action": "route"
@@ -89,7 +90,8 @@
                     "geosite-facebook1",
                     "geoip-facebook2",
                     "geosite-facebook3",
-                    "geosite-instagram"
+                    "geosite-instagram",
+                    "AS32934"
                 ],
                 "outbound": "Internet",
                 "action": "route",
@@ -110,7 +112,7 @@
                     "geosite-openai",
                     "geosite-google"
                 ],
-                "outbound": "Streaming",
+                "outbound": "Internet",
                 "action": "route",
                 "server": "google-dns",
                 "rewrite_ttl": 7200
@@ -175,30 +177,19 @@
             "tag": "Latency",
             "outbounds": [
                 "siren vmess",
-                "siren vmess 2",
                 "shiroko vmess",
                 "SG Shiroko Yumi",
                 "ID Akamai alicia",
                 "ID 1 Amazon alicia",
-                "ID 2 Amazon alicia",
-                "ID 1 Cayaga alicia",
-                "ID 2 Cayaga alicia",
-                "SG IP Oracle alicia",
-                "SG 1 IP  OVHcloud alicia",
-                "SG 2 IP OVHcloud alicia",
                 "ID Akamai miriela",
                 "ID 1 Amazon miriela",
-                "ID 2 Amazon miriela",
                 "ID Akamai terakomari",
-                "ID Amazoncom terakomari",
-                "SG 1 Tencent terakomari",
-                "SG 2 Tencent terakomari",
                 "SG Alibaba terakomari",
-                "SG Latitudesh terakomari",
-                "SG Green Floid terakomari",
-                "SG Digitalocean violetvpn",
-                "ID 2 Cagayan megumin",
-                "ID PusatMedia megumin"
+                "ID PusatMedia megumin",
+                "ID Rumahweb layla",
+                "ID Ciputra layla",
+                "ID Amazoncom layla",
+                "ID Rotasi"
             ],
             "url": "https://connectivitycheck.gstatic.com/generate_204",
             "interval": "1m0s",
@@ -216,36 +207,6 @@
                 "GB OVHcloud alicia"
             ],
             "default": "SG Cloudflare alicia"
-        },
-        {
-            "type": "urltest",
-            "tag": "Streaming",
-            "outbounds": [
-                "SG Siren Nayumi",
-                "SG 1 Oracle ophelia",
-                "SG OVHcloud ophelia",
-                "SG 3 Oracle ophelia",
-                "SG 5 M1 ophelia",
-                "SG 6 Tencent ophelia",
-                "SG 8 Alibaba ophelia",
-                "SG 12 CDSGlobal ophelia",
-                "SG 26 Amazoncom ophelia",
-                "SG 28 Amazoncom ophelia",
-                "ID 1 Akamai megumin",
-                "ID 1 Amazon megumin",
-                "ID 2 Amazon megumin",
-                "ID 1 Cagayan megumin",
-                "ID Maquia Aws",
-                "ID Cayaga Maquia",
-                "ID IP aws 1 Maquia notls",
-                "ID IP Cayaga 1 Maquia TLS",
-                "SG IP Orecle Cloud 1 Maquia TLS",
-                "SG Tencent Cloud Maquia"
-            ],
-            "url": "https://connectivitycheck.gstatic.com/generate_204",
-            "interval": "1m0s",
-            "tolerance": 50,
-            "idle_timeout": "5m0s"
         },
         {
             "type": "selector",
@@ -297,29 +258,6 @@
         },
         {
             "type": "vmess",
-            "tag": "siren vmess 2",
-            "tcp_fast_open": true,
-            "server": "siren.yumidev.workers.dev",
-            "server_port": 443,
-            "uuid": "eab8e42d-8a6a-46c5-b21b-b85bcabe6d32",
-            "security": "zero",
-            "tls": {
-                "enabled": true,
-                "server_name": "siren.yumidev.workers.dev",
-                "utls": {
-                    "enabled": true
-                }
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/SG",
-                "headers": {
-                    "Host": "siren.yumidev.workers.dev"
-                }
-            }
-        },
-        {
-            "type": "vmess",
             "tag": "shiroko vmess",
             "tcp_fast_open": true,
             "server": "support.vidio.com",
@@ -362,196 +300,6 @@
         },
         {
             "type": "trojan",
-            "tag": "SG Siren Nayumi",
-            "tcp_fast_open": true,
-            "server": "support.vidio.com",
-            "server_port": 443,
-            "password": "9faf8d4c-aab1-4806-bb6f-1ab1bfa05ea4",
-            "tls": {
-                "enabled": true,
-                "server_name": "siren.nayumiwandi.workers.dev"
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/152.69.221.114-23302",
-                "headers": {
-                    "Host": "siren.nayumiwandi.workers.dev"
-                }
-            }
-        },
-        {
-            "type": "trojan",
-            "tag": "SG 1 Oracle ophelia",
-            "tcp_fast_open": true,
-            "server": "support.vidio.com",
-            "server_port": 443,
-            "password": "aa098b21-5d06-4286-9480-2e9596751b21",
-            "tls": {
-                "enabled": true,
-                "server_name": "ophelia.yumidev.workers.dev"
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/152.69.221.114-23302",
-                "headers": {
-                    "Host": "ophelia.yumidev.workers.dev"
-                }
-            }
-        },
-        {
-            "type": "trojan",
-            "tag": "SG OVHcloud ophelia",
-            "tcp_fast_open": true,
-            "server": "support.vidio.com",
-            "server_port": 443,
-            "password": "aa098b21-5d06-4286-9480-2e9596751b21",
-            "tls": {
-                "enabled": true,
-                "server_name": "ophelia.yumidev.workers.dev"
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/15.235.199.103-2053",
-                "headers": {
-                    "Host": "ophelia.yumidev.workers.dev"
-                }
-            }
-        },
-        {
-            "type": "trojan",
-            "tag": "SG 3 Oracle ophelia",
-            "tcp_fast_open": true,
-            "server": "support.vidio.com",
-            "server_port": 443,
-            "password": "aa098b21-5d06-4286-9480-2e9596751b21",
-            "tls": {
-                "enabled": true,
-                "server_name": "ophelia.yumidev.workers.dev"
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/146.235.19.79-28983",
-                "headers": {
-                    "Host": "ophelia.yumidev.workers.dev"
-                }
-            }
-        },
-        {
-            "type": "trojan",
-            "tag": "SG 5 M1 ophelia",
-            "tcp_fast_open": true,
-            "server": "support.vidio.com",
-            "server_port": 443,
-            "password": "aa098b21-5d06-4286-9480-2e9596751b21",
-            "tls": {
-                "enabled": true,
-                "server_name": "ophelia.yumidev.workers.dev"
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/143.42.66.91-443",
-                "headers": {
-                    "Host": "ophelia.yumidev.workers.dev"
-                }
-            }
-        },
-        {
-            "type": "trojan",
-            "tag": "SG 6 Tencent ophelia",
-            "tcp_fast_open": true,
-            "server": "support.vidio.com",
-            "server_port": 443,
-            "password": "aa098b21-5d06-4286-9480-2e9596751b21",
-            "tls": {
-                "enabled": true,
-                "server_name": "ophelia.yumidev.workers.dev"
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/150.109.24.233-6666",
-                "headers": {
-                    "Host": "ophelia.yumidev.workers.dev"
-                }
-            }
-        },
-        {
-            "type": "trojan",
-            "tag": "SG 8 Alibaba ophelia",
-            "tcp_fast_open": true,
-            "server": "support.vidio.com",
-            "server_port": 443,
-            "password": "aa098b21-5d06-4286-9480-2e9596751b21",
-            "tls": {
-                "enabled": true,
-                "server_name": "ophelia.yumidev.workers.dev"
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/8.219.59.132-48964",
-                "headers": {
-                    "Host": "ophelia.yumidev.workers.dev"
-                }
-            }
-        },
-        {
-            "type": "trojan",
-            "tag": "SG 12 CDSGlobal ophelia",
-            "tcp_fast_open": true,
-            "server": "support.vidio.com",
-            "server_port": 443,
-            "password": "aa098b21-5d06-4286-9480-2e9596751b21",
-            "tls": {
-                "enabled": true,
-                "server_name": "ophelia.yumidev.workers.dev"
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/164.52.2.98-443",
-                "headers": {
-                    "Host": "ophelia.yumidev.workers.dev"
-                }
-            }
-        },
-        {
-            "type": "trojan",
-            "tag": "SG 26 Amazoncom ophelia",
-            "tcp_fast_open": true,
-            "server": "support.vidio.com",
-            "server_port": 443,
-            "password": "bef1b745-63cc-475c-ba4f-7b5b484ffdfe",
-            "tls": {
-                "enabled": true,
-                "server_name": "ophelia.yumidev.workers.dev"
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/13.228.155.72-443",
-                "headers": {
-                    "Host": "ophelia.yumidev.workers.dev"
-                }
-            }
-        },
-        {
-            "type": "trojan",
-            "tag": "SG 28 Amazoncom ophelia",
-            "tcp_fast_open": true,
-            "server": "support.vidio.com",
-            "server_port": 443,
-            "password": "bef1b745-63cc-475c-ba4f-7b5b484ffdfe",
-            "tls": {
-                "enabled": true,
-                "server_name": "ophelia.yumidev.workers.dev"
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/13.229.159.215-443",
-                "headers": {
-                    "Host": "ophelia.yumidev.workers.dev"
-                }
-            }
-        },
-        {
-            "type": "trojan",
             "tag": "ID Akamai alicia",
             "tcp_fast_open": true,
             "server": "support.vidio.com",
@@ -564,127 +312,6 @@
             "transport": {
                 "type": "ws",
                 "path": "/172.232.239.151-587",
-                "headers": {
-                    "Host": "mayumikawai.my.id"
-                }
-            }
-        },
-        {
-            "type": "trojan",
-            "tag": "ID 1 Amazon alicia",
-            "tcp_fast_open": true,
-            "server": "support.vidio.com",
-            "server_port": 443,
-            "password": "0741f570-e1ff-47f5-8dd1-d8ac7bc92a77",
-            "tls": {
-                "enabled": true,
-                "server_name": "mayumikawai.my.id"
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/43.218.77.16-1443",
-                "headers": {
-                    "Host": "mayumikawai.my.id"
-                }
-            }
-        },
-        {
-            "type": "trojan",
-            "tag": "ID 2 Amazon alicia",
-            "tcp_fast_open": true,
-            "server": "support.vidio.com",
-            "server_port": 443,
-            "password": "0741f570-e1ff-47f5-8dd1-d8ac7bc92a77",
-            "tls": {
-                "enabled": true,
-                "server_name": "mayumikawai.my.id"
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/43.218.77.16-443",
-                "headers": {
-                    "Host": "mayumikawai.my.id"
-                }
-            }
-        },
-        {
-            "type": "trojan",
-            "tag": "ID 1 Cayaga alicia",
-            "tcp_fast_open": true,
-            "server": "support.vidio.com",
-            "server_port": 443,
-            "password": "0741f570-e1ff-47f5-8dd1-d8ac7bc92a77",
-            "tls": {
-                "enabled": true,
-                "server_name": "mayumikawai.my.id"
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/203.194.112.119-8443",
-                "headers": {
-                    "Host": "mayumikawai.my.id"
-                }
-            }
-        },
-        {
-            "type": "trojan",
-            "tag": "ID 2 Cayaga alicia",
-            "tcp_fast_open": true,
-            "server": "support.vidio.com",
-            "server_port": 443,
-            "password": "0741f570-e1ff-47f5-8dd1-d8ac7bc92a77",
-            "tls": {
-                "enabled": true,
-                "server_name": "mayumikawai.my.id"
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/203.194.112.119-2053",
-                "headers": {
-                    "Host": "mayumikawai.my.id"
-                }
-            }
-        },
-        {
-            "type": "vless",
-            "tag": "SG IP Oracle alicia",
-            "tcp_fast_open": true,
-            "server": "172.67.5.14",
-            "server_port": 80,
-            "uuid": "6f759385-2182-442c-99f0-cb2bdf74b76f",
-            "transport": {
-                "type": "ws",
-                "path": "/152.69.221.114-23302",
-                "headers": {
-                    "Host": "mayumikawai.my.id"
-                }
-            }
-        },
-        {
-            "type": "vless",
-            "tag": "SG 1 IP  OVHcloud alicia",
-            "tcp_fast_open": true,
-            "server": "172.67.5.14",
-            "server_port": 80,
-            "uuid": "6f759385-2182-442c-99f0-cb2bdf74b76f",
-            "transport": {
-                "type": "ws",
-                "path": "/15.235.199.103-2053",
-                "headers": {
-                    "Host": "mayumikawai.my.id"
-                }
-            }
-        },
-        {
-            "type": "vless",
-            "tag": "SG 2 IP OVHcloud alicia",
-            "tcp_fast_open": true,
-            "server": "172.67.5.14",
-            "server_port": 80,
-            "uuid": "6f759385-2182-442c-99f0-cb2bdf74b76f",
-            "transport": {
-                "type": "ws",
-                "path": "/15.235.199.103-2053",
                 "headers": {
                     "Host": "mayumikawai.my.id"
                 }
@@ -733,27 +360,6 @@
             }
         },
         {
-            "type": "vless",
-            "tag": "ID 2 Amazon miriela",
-            "tcp_fast_open": true,
-            "server": "nontontv.vidio.com",
-            "server_port": 443,
-            "uuid": "c37bed94-0c0b-40f8-8a0c-15a45a22e754",
-            "tls": {
-                "enabled": true,
-                "server_name": "miriela.mayumidev.workers.dev",
-                "insecure": false,
-                "disable_sni": false
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/43.218.77.16-443",
-                "headers": {
-                    "Host": "miriela.mayumidev.workers.dev"
-                }
-            }
-        },
-        {
             "type": "trojan",
             "tag": "ID Akamai terakomari",
             "tcp_fast_open": true,
@@ -767,65 +373,6 @@
             "transport": {
                 "type": "ws",
                 "path": "/172.232.239.151-587",
-                "headers": {
-                    "Host": "mayumiyui.my.id"
-                }
-            }
-        },
-        {
-            "type": "trojan",
-            "tag": "ID Amazoncom terakomari",
-            "tcp_fast_open": true,
-            "server": "support.vidio.com",
-            "server_port": 443,
-            "password": "e12c8206-0a48-4846-a5ea-f1be585d9a1e",
-            "tls": {
-                "enabled": true,
-                "server_name": "mayumiyui.my.id"
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/43.218.77.16-1443",
-                "headers": {
-                    "Host": "mayumiyui.my.id"
-                }
-            }
-        },
-        {
-            "type": "vless",
-            "tag": "SG 1 Tencent terakomari",
-            "tcp_fast_open": true,
-            "server": "support.vidio.com",
-            "server_port": 443,
-            "uuid": "2f988d66-aa7d-4502-a154-48f32158c872",
-            "tls": {
-                "enabled": true,
-                "server_name": "mayumiyui.my.id",
-                "insecure": false,
-                "disable_sni": false
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/101.32.247.126-725",
-                "headers": {
-                    "Host": "mayumiyui.my.id"
-                }
-            }
-        },
-        {
-            "type": "trojan",
-            "tag": "SG 2 Tencent terakomari",
-            "tcp_fast_open": true,
-            "server": "support.vidio.com",
-            "server_port": 443,
-            "password": "2f988d66-aa7d-4502-a154-48f32158c872",
-            "tls": {
-                "enabled": true,
-                "server_name": "mayumiyui.my.id"
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/43.128.95.84-38091",
                 "headers": {
                     "Host": "mayumiyui.my.id"
                 }
@@ -847,160 +394,6 @@
                 "path": "/47.245.91.197-9000",
                 "headers": {
                     "Host": "mayumiyui.my.id"
-                }
-            }
-        },
-        {
-            "type": "trojan",
-            "tag": "SG Latitudesh terakomari",
-            "tcp_fast_open": true,
-            "server": "support.vidio.com",
-            "server_port": 443,
-            "password": "2f988d66-aa7d-4502-a154-48f32158c872",
-            "tls": {
-                "enabled": true,
-                "server_name": "mayumiyui.my.id"
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/64.49.14.41-2053",
-                "headers": {
-                    "Host": "mayumiyui.my.id"
-                }
-            }
-        },
-        {
-            "type": "trojan",
-            "tag": "SG Green Floid terakomari",
-            "tcp_fast_open": true,
-            "server": "support.vidio.com",
-            "server_port": 443,
-            "password": "0f18bf48-f987-42c2-8d49-fbcd98151328",
-            "tls": {
-                "enabled": true,
-                "server_name": "mayumiyui.my.id"
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/5.34.176.119-81",
-                "headers": {
-                    "Host": "mayumiyui.my.id"
-                }
-            }
-        },
-        {
-            "type": "vless",
-            "tag": "SG Digitalocean violetvpn",
-            "tcp_fast_open": true,
-            "server": "support.vidio.com",
-            "server_port": 443,
-            "uuid": "74961c2a-8872-484f-89eb-024611eec05e",
-            "tls": {
-                "enabled": true,
-                "server_name": "violetvpn.biz.id",
-                "insecure": false,
-                "disable_sni": false
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/sg-do",
-                "headers": {
-                    "Host": "violetvpn.biz.id"
-                }
-            }
-        },
-        {
-            "type": "trojan",
-            "tag": "ID 1 Akamai megumin",
-            "tcp_fast_open": true,
-            "server": "nontontv.vidio.com",
-            "server_port": 443,
-            "password": "57a70726-3aeb-46f2-8e6a-bec05ad5bfe5",
-            "tls": {
-                "enabled": true,
-                "server_name": "megumin.kazanami.workers.dev"
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/172.232.239.151-587",
-                "headers": {
-                    "Host": "megumin.kazanami.workers.dev"
-                }
-            }
-        },
-        {
-            "type": "trojan",
-            "tag": "ID 1 Amazon megumin",
-            "tcp_fast_open": true,
-            "server": "nontontv.vidio.com",
-            "server_port": 443,
-            "password": "57a70726-3aeb-46f2-8e6a-bec05ad5bfe5",
-            "tls": {
-                "enabled": true,
-                "server_name": "megumin.kazanami.workers.dev"
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/43.218.77.16-1443",
-                "headers": {
-                    "Host": "megumin.kazanami.workers.dev"
-                }
-            }
-        },
-        {
-            "type": "trojan",
-            "tag": "ID 2 Amazon megumin",
-            "tcp_fast_open": true,
-            "server": "nontontv.vidio.com",
-            "server_port": 443,
-            "password": "57a70726-3aeb-46f2-8e6a-bec05ad5bfe5",
-            "tls": {
-                "enabled": true,
-                "server_name": "megumin.kazanami.workers.dev"
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/43.218.77.16-443",
-                "headers": {
-                    "Host": "megumin.kazanami.workers.dev"
-                }
-            }
-        },
-        {
-            "type": "trojan",
-            "tag": "ID 1 Cagayan megumin",
-            "tcp_fast_open": true,
-            "server": "nontontv.vidio.com",
-            "server_port": 443,
-            "password": "57a70726-3aeb-46f2-8e6a-bec05ad5bfe5",
-            "tls": {
-                "enabled": true,
-                "server_name": "megumin.kazanami.workers.dev"
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/203.194.112.119-8443",
-                "headers": {
-                    "Host": "megumin.kazanami.workers.dev"
-                }
-            }
-        },
-        {
-            "type": "trojan",
-            "tag": "ID 2 Cagayan megumin",
-            "tcp_fast_open": true,
-            "server": "nontontv.vidio.com",
-            "server_port": 443,
-            "password": "57a70726-3aeb-46f2-8e6a-bec05ad5bfe5",
-            "tls": {
-                "enabled": true,
-                "server_name": "megumin.kazanami.workers.dev"
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/203.194.112.119-2053",
-                "headers": {
-                    "Host": "megumin.kazanami.workers.dev"
                 }
             }
         },
@@ -1120,134 +513,91 @@
         },
         {
             "type": "vmess",
-            "tag": "ID Maquia Aws",
-            "server": "support.vidio.com",
-            "server_port": 443,
-            "uuid": "7209ff68-d4e8-4f8b-b7e5-c1e241316870",
-            "security": "zero",
-            "tls": {
-                "enabled": true,
-                "server_name": "maquia.jayecyumi.workers.dev",
-                "utls": {
-                    "enabled": true
-                }
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/43.218.77.16-1443",
-                "headers": {
-                    "Host": "maquia.jayecyumi.workers.dev"
-                }
-            }
-        },
-        {
-            "type": "vmess",
-            "tag": "ID Cayaga Maquia",
-            "server": "support.vidio.com",
-            "server_port": 443,
-            "uuid": "7209ff68-d4e8-4f8b-b7e5-c1e241316870",
-            "security": "zero",
-            "tls": {
-                "enabled": true,
-                "server_name": "maquia.jayecyumi.workers.dev",
-                "utls": {
-                    "enabled": true
-                }
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/203.194.112.119-2053",
-                "headers": {
-                    "Host": "maquia.jayecyumi.workers.dev"
-                }
-            }
-        },
-        {
-            "type": "vmess",
-            "tag": "ID IP aws 1 Maquia notls",
-            "server": "172.66.0.145",
-            "server_port": 80,
-            "uuid": "7209ff68-d4e8-4f8b-b7e5-c1e241316870",
-            "security": "zero",
-            "tls": {
-                "enabled": false,
-                "server_name": "maquia.jayecyumi.workers.dev",
-                "utls": {
-                    "enabled": true
-                }
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/43.218.77.16-1443",
-                "headers": {
-                    "Host": "maquia.jayecyumi.workers.dev"
-                }
-            }
-        },
-        {
-            "type": "vmess",
-            "tag": "ID IP Cayaga 1 Maquia TLS",
-            "server": "172.66.0.145",
-            "server_port": 443,
-            "uuid": "7209ff68-d4e8-4f8b-b7e5-c1e241316870",
-            "security": "zero",
-            "tls": {
-                "enabled": true,
-                "server_name": "maquia.jayecyumi.workers.dev",
-                "utls": {
-                    "enabled": true
-                }
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/203.194.112.119-2053",
-                "headers": {
-                    "Host": "maquia.jayecyumi.workers.dev"
-                }
-            }
-        },
-        {
-            "type": "vmess",
-            "tag": "SG IP Orecle Cloud 1 Maquia TLS",
-            "server": "172.66.0.145",
-            "server_port": 443,
-            "uuid": "7209ff68-d4e8-4f8b-b7e5-c1e241316870",
-            "security": "zero",
-            "tls": {
-                "enabled": true,
-                "server_name": "maquia.jayecyumi.workers.dev",
-                "utls": {
-                    "enabled": true
-                }
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/152.69.221.144-23302",
-                "headers": {
-                    "Host": "maquia.jayecyumi.workers.dev"
-                }
-            }
-        },
-        {
-            "type": "vmess",
-            "tag": "SG Tencent Cloud Maquia",
+            "tag": "ID Amazoncom layla",
+            "server": "nontontv.vidio.com",
             "tcp_fast_open": true,
-            "server": "support.vidio.com",
             "server_port": 443,
-            "uuid": "7209ff68-d4e8-4f8b-b7e5-c1e241316870",
+            "uuid": "32ec8217-99f1-404c-90d0-7234500aebdd",
             "security": "zero",
             "tls": {
                 "enabled": true,
-                "server_name": "maquia.jayecyumi.workers.dev",
+                "server_name": "layla.mayumiyui.my.id",
                 "utls": {
                     "enabled": true
                 }
             },
             "transport": {
                 "type": "ws",
-                "path": "/43.156.181.203-443",
+                "path": "/43.218.77.16-443",
                 "headers": {
-                    "Host": "maquia.jayecyumi.workers.dev"
+                    "Host": "layla.mayumiyui.my.id"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "ID Ciputra layla",
+            "server": "nontontv.vidio.com",
+            "tcp_fast_open": true,
+            "server_port": 443,
+            "uuid": "32ec8217-99f1-404c-90d0-7234500aebdd",
+            "security": "zero",
+            "tls": {
+                "enabled": true,
+                "server_name": "layla.mayumiyui.my.id",
+                "utls": {
+                    "enabled": true
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/149.129.250.8-443",
+                "headers": {
+                    "Host": "layla.mayumiyui.my.id"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "ID Rumahweb layla",
+            "server": "nontontv.vidio.com",
+            "tcp_fast_open": true,
+            "server_port": 443,
+            "uuid": "32ec8217-99f1-404c-90d0-7234500aebdd",
+            "tls": {
+                "enabled": true,
+                "server_name": "layla.mayumiyui.my.id",
+                "insecure": false,
+                "disable_sni": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/203.194.112.119-2053",
+                "headers": {
+                    "Host": "layla.mayumiyui.my.id"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "ID Rotasi",
+            "server": "nontontv.vidio.com",
+            "tcp_fast_open": true,
+            "server_port": 443,
+            "uuid": "32ec8217-99f1-404c-90d0-7234500aebdd",
+            "security": "zero",
+            "tls": {
+                "enabled": true,
+                "server_name": "layla.mayumiyui.my.id",
+                "utls": {
+                    "enabled": true
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/ID",
+                "headers": {
+                    "Host": "layla.mayumiyui.my.id"
                 }
             }
         }
@@ -1292,7 +642,7 @@
                 "inbound": [
                     "direct-in"
                 ],
-                "outbound": "Streaming",
+                "outbound": "Internet",
                 "action": "route"
             },
             {
@@ -1313,7 +663,9 @@
                     "geoip-facebook2",
                     "geosite-facebook3",
                     "geosite-instagram",
-                    "geosite-discord"
+                    "geosite-discord",
+                    "geosite-tiktok",
+                    "AS32934"
                 ],
                 "inbound": [
                     "direct-in"
@@ -1418,6 +770,20 @@
                 "tag": "geosite-discord",
                 "format": "binary",
                 "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/discord.srs",
+                "download_detour": "Internet"
+            },
+            {
+                "type": "remote",
+                "tag": "geosite-tiktok",
+                "format": "binary",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo-lite/geosite/tiktok.srs",
+                "download_detour": "Internet"
+            },
+            {
+                "type": "remote",
+                "tag": "AS32934",
+                "format": "binary",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/asn/AS132934.srs",
                 "download_detour": "Internet"
             }
         ],
