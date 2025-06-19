@@ -176,7 +176,7 @@
             "type": "urltest",
             "tag": "Latency",
             "outbounds": [
-                "siren vmess",
+                "siren nayumi vmess",
                 "shiroko vmess",
                 "SG Shiroko Yumi",
                 "ID Akamai alicia",
@@ -234,7 +234,7 @@
         },
         {
             "type": "vmess",
-            "tag": "siren vmess",
+            "tag": "siren nayumi vmess",
             "tcp_fast_open": true,
             "server": "support.vidio.com",
             "server_port": 443,
