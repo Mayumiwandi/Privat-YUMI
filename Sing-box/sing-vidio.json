@@ -6,7 +6,8 @@
         "timestamp": true
     },
     "dns": {
-        "servers": [{
+        "servers": [
+            {
                 "tag": "google-dns",
                 "address": "tls://dns.google",
                 "address_resolver": "dns-local",
@@ -27,7 +28,8 @@
                 "detour": "block"
             }
         ],
-        "rules": [{
+        "rules": [
+            {
                 "domain": [
                     "plus-store.naver.com",
                     "ava.game.naver.com",
@@ -57,7 +59,7 @@
                     "yumi.mayumiyui.workers.dev",
                     "terakomari.mayumiyui.my.id",
                     "miriela.mayumidev.workers.dev",
-                    "mayumikawai.my.id",
+                    "mayumi.biz.id",
                     "mayumiyui.my.id",
                     "yumicftigarun.web.id",
                     "ophelia.yumidev.workers.dev",
@@ -65,8 +67,7 @@
                     "siren.yumidev.workers.dev",
                     "yumiwolker.mayumiyui.workers.dev",
                     "nautica.vokip29018.workers.dev",
-                    "maquia.jayecyumi.workers.dev",
-                    "layla.mayumiyui.my.id"
+                    "maquia.jayecyumi.workers.dev"
                 ],
                 "server": "google-dns",
                 "action": "route"
@@ -91,7 +92,8 @@
                     "geoip-facebook2",
                     "geosite-facebook3",
                     "geosite-instagram",
-                    "AS32934"
+                    "AS32934",
+                    "Google-AS15169"
                 ],
                 "outbound": "Internet",
                 "action": "route",
@@ -121,7 +123,8 @@
         "strategy": "ipv4_only",
         "independent_cache": true
     },
-    "inbounds": [{
+    "inbounds": [
+        {
             "type": "tun",
             "tag": "tun-in",
             "interface_name": "tunelm0n",
@@ -163,7 +166,8 @@
             "override_port": 53
         }
     ],
-    "outbounds": [{
+    "outbounds": [
+        {
             "type": "selector",
             "tag": "Internet",
             "outbounds": [
@@ -179,7 +183,7 @@
                 "siren nayumi vmess",
                 "shiroko vmess",
                 "SG Shiroko Yumi",
-                "ID Akamai alicia",
+                "ID MITRA VISIONER Alya",
                 "ID Akamai miriela",
                 "ID 1 Amazon miriela",
                 "ID Akamai terakomari",
@@ -192,20 +196,19 @@
             ],
             "url": "https://connectivitycheck.gstatic.com/generate_204",
             "interval": "1m0s",
-            "tolerance": 60,
+            "tolerance": 50,
             "idle_timeout": "5m0s"
         },
         {
             "type": "selector",
             "tag": "Region",
             "outbounds": [
-                "SG Cloudflare alicia",
-                "US Cloudflare alicia",
-                "CN rainbow alicia",
-                "JP racle alicia",
-                "GB OVHcloud alicia"
+                "SG Eons Data Alya",
+                "Oracle Corporation(JP)",
+                "RackNerd LLC (US)",
+                "Celcom Axiata Berhad (MY)"
             ],
-            "default": "SG Cloudflare alicia"
+            "default": "Celcom Axiata Berhad (MY)"
         },
         {
             "type": "selector",
@@ -294,25 +297,6 @@
                 "path": "/152.69.221.114-23302",
                 "headers": {
                     "Host": "shiroko.shirokoyumi.workers.dev"
-                }
-            }
-        },
-        {
-            "type": "trojan",
-            "tag": "ID Akamai alicia",
-            "tcp_fast_open": true,
-            "server": "support.vidio.com",
-            "server_port": 443,
-            "password": "0741f570-e1ff-47f5-8dd1-d8ac7bc92a77",
-            "tls": {
-                "enabled": true,
-                "server_name": "mayumikawai.my.id"
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/172.232.239.151-587",
-                "headers": {
-                    "Host": "mayumikawai.my.id"
                 }
             }
         },
@@ -416,101 +400,6 @@
             }
         },
         {
-            "type": "trojan",
-            "tag": "SG Cloudflare alicia",
-            "tcp_fast_open": true,
-            "server": "nontontv.vidio.com",
-            "server_port": 443,
-            "password": "84cef8a7-9201-471f-ad0a-2b6b292c71fb",
-            "tls": {
-                "enabled": true,
-                "server_name": "mayumikawai.my.id"
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/138.2.74.219-28616",
-                "headers": {
-                    "Host": "mayumikawai.my.id"
-                }
-            }
-        },
-        {
-            "type": "trojan",
-            "tag": "US Cloudflare alicia",
-            "tcp_fast_open": true,
-            "server": "nontontv.vidio.com",
-            "server_port": 443,
-            "password": "86722776-b59c-4837-8b8f-a2dbc2153669",
-            "tls": {
-                "enabled": true,
-                "server_name": "mayumikawai.my.id"
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/104.168.43.27-54063",
-                "headers": {
-                    "Host": "mayumikawai.my.id"
-                }
-            }
-        },
-        {
-            "type": "trojan",
-            "tag": "CN rainbow alicia",
-            "tcp_fast_open": true,
-            "server": "nontontv.vidio.com",
-            "server_port": 443,
-            "password": "a9afab21-a6a4-43e9-b2d1-04d6bdad34ab",
-            "tls": {
-                "enabled": true,
-                "server_name": "mayumikawai.my.id"
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/103.115.44.87-49322",
-                "headers": {
-                    "Host": "mayumikawai.my.id"
-                }
-            }
-        },
-        {
-            "type": "trojan",
-            "tag": "JP racle alicia",
-            "tcp_fast_open": true,
-            "server": "nontontv.vidio.com",
-            "server_port": 443,
-            "password": "5c41aa10-5558-4822-99de-ab991b4f3eab",
-            "tls": {
-                "enabled": true,
-                "server_name": "mayumikawai.my.id"
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/131.186.63.89-11655",
-                "headers": {
-                    "Host": "mayumikawai.my.id"
-                }
-            }
-        },
-        {
-            "type": "trojan",
-            "tag": "GB OVHcloud alicia",
-            "tcp_fast_open": true,
-            "server": "nontontv.vidio.com",
-            "server_port": 443,
-            "password": "ed4ed972-8188-43f7-ab4c-d211a1854e69",
-            "tls": {
-                "enabled": true,
-                "server_name": "mayumikawai.my.id"
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/91.199.32.68-8443",
-                "headers": {
-                    "Host": "mayumikawai.my.id"
-                }
-            }
-        },
-        {
             "type": "vmess",
             "tag": "ID Amazoncom layla",
             "server": "nontontv.vidio.com",
@@ -599,13 +488,120 @@
                     "Host": "layla.mayumiyui.my.id"
                 }
             }
+        },
+        {
+            "type": "trojan",
+            "tag": "ID MITRA VISIONER Alya",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "password": "4ed8580c-8262-460a-8037-deee874c65be",
+            "tls": {
+                "enabled": true,
+                "server_name": "yumicftigarun.web.id"
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/172.252.8.168-443",
+                "headers": {
+                    "Host": "yumicftigarun.web.id"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "SG Eons Data Alya",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "uuid": "e86eeb74-e507-421c-8915-e3aa91a6510b",
+            "tls": {
+                "enabled": true,
+                "server_name": "yumicftigarun.web.id",
+                "insecure": false,
+                "disable_sni": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/38.181.70.7-16240",
+                "headers": {
+                    "Host": "yumicftigarun.web.id"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Oracle Corporation(JP)",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "uuid": "3e06c18b-4ae6-41a2-9b79-e5b6077e5120",
+            "tls": {
+                "enabled": true,
+                "server_name": "nontontv.vidio.com.mayumi.biz.id",
+                "insecure": false,
+                "disable_sni": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/138.2.18.82-8880",
+                "headers": {
+                    "Host": "nontontv.vidio.com.mayumi.biz.id"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "RackNerd LLC (US)",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "uuid": "3e06c18b-4ae6-41a2-9b79-e5b6077e5120",
+            "security": "zero",
+            "tls": {
+                "enabled": true,
+                "server_name": "nontontv.vidio.com.mayumi.biz.id",
+                "utls": {
+                    "enabled": true
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/107.172.87.159-12354",
+                "headers": {
+                    "Host": "nontontv.vidio.com.mayumi.biz.id"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Celcom Axiata Berhad (MY)",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "uuid": "3e06c18b-4ae6-41a2-9b79-e5b6077e5120",
+            "tls": {
+                "enabled": true,
+                "server_name": "nontontv.vidio.com.mayumi.biz.id",
+                "insecure": false,
+                "disable_sni": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/183.171.200.162-443",
+                "headers": {
+                    "Host": "nontontv.vidio.com.mayumi.biz.id"
+                }
+            }
         }
     ],
     "route": {
-        "rules": [{
+        "rules": [
+            {
                 "type": "logical",
                 "mode": "or",
-                "rules": [{
+                "rules": [
+                    {
                         "protocol": "dns"
                     },
                     {
@@ -664,7 +660,8 @@
                     "geosite-instagram",
                     "geosite-discord",
                     "geosite-tiktok",
-                    "AS32934"
+                    "AS32934",
+                    "Google-AS15169"
                 ],
                 "inbound": [
                     "direct-in"
@@ -673,7 +670,8 @@
                 "action": "route"
             }
         ],
-        "rule_set": [{
+        "rule_set": [
+            {
                 "type": "remote",
                 "tag": "geosite-rule-ads",
                 "format": "binary",
@@ -783,6 +781,13 @@
                 "tag": "AS32934",
                 "format": "binary",
                 "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/asn/AS132934.srs",
+                "download_detour": "Internet"
+            },
+            {
+                "type": "remote",
+                "tag": "Google-AS15169",
+                "format": "binary",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/asn/AS15169.srs",
                 "download_detour": "Internet"
             }
         ],
