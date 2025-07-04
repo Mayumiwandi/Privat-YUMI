@@ -89,11 +89,18 @@
             {
                 "rule_set": [
                     "geosite-facebook1",
-                    "geoip-facebook2",
                     "geosite-facebook3",
+                    "facebook-dev",
+                    "facebook-ipcidr",
                     "geosite-instagram",
+                    "geosite-discord",
+                    "geosite-tiktok",
                     "AS32934",
-                    "Google-AS15169"
+                    "Google-AS15169",
+                    "google-ipcidr",
+                    "google-scholar",
+                    "speedtest",
+                    "messenger"
                 ],
                 "outbound": "Internet",
                 "action": "route",
