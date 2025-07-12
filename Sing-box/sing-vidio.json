@@ -16,6 +16,14 @@
                 "detour": "🚀 Latency"
             },
             {
+                "tag": "cloudflare-dns",
+                "address": "https://cloudflare-dns.com/dns-query",
+                "address_resolver": "dns-local",
+                "address_strategy": "prefer_ipv4",
+                "strategy": "ipv4_only",
+                "detour": "🦈 Shark"
+            },
+            {
                 "tag": "dns-local",
                 "address": "local",
                 "address_resolver": "local",
@@ -39,10 +47,23 @@
                     "support.vidio.com",
                     "img.email2.vidio.com",
                     "quiz.int.vidio.com",
-                    "quiz.vidio.com",
-                    "https://cloudflare-dns.com/dns-query"
+                    "quiz.vidio.com"
                 ],
                 "server": "dns-local"
+            },
+            {
+                "domain": [
+                    "plus-store.naver.com",
+                    "ava.game.naver.com",
+                    "investor.fb.com",
+                    "investors.spotify.com",
+                    "nontontv.vidio.com",
+                    "support.vidio.com",
+                    "img.email2.vidio.com",
+                    "quiz.int.vidio.com",
+                    "quiz.vidio.com"
+                ],
+                "server": "cloudflare-dns"
             },
             {
                 "network": "udp",
@@ -179,7 +200,8 @@
             "tag": "🌐 Internet",
             "outbounds": [
                 "🚀 Latency",
-                "📍 Region"
+                "📍 Region",
+                "🦈 Shark"
             ],
             "default": "🚀 Latency"
         },
@@ -188,16 +210,27 @@
             "tag": "🚀 Latency",
             "outbounds": [
                 "siren nayumi vmess",
-                "shiroko vmess",
-                "SG Shiroko Yumi",
+                "shiroko vmess Linode",
                 "ID MITRA VISIONER Alya",
-                "ID 1 Amazon miriela",
-                "ID PusatMedia megumin",
-                "ID Amazoncom layla",
-                "ID Rotasi"
+                "ID Amazon layla",
+                "🦈 Shark"
             ],
             "url": "https://connectivitycheck.gstatic.com/generate_204",
-            "interval": "1m0s",
+            "interval": "1m30s",
+            "tolerance": 60,
+            "idle_timeout": "5m0s"
+        },
+        {
+            "type": "urltest",
+            "tag": "🦈 Shark",
+            "outbounds": [
+                "SG Shiroko Yumi",
+                "Lightnode Limited ID",
+                "Linode Shark ID",
+                "Alibaba Shark SG"
+            ],
+            "url": "https://1.1.1.1/generate_204",
+            "interval": "1m30s",
             "tolerance": 60,
             "idle_timeout": "5m0s"
         },
@@ -254,7 +287,7 @@
             },
             "transport": {
                 "type": "ws",
-                "path": "/SG",
+                "path": "/ID",
                 "headers": {
                     "Host": "siren.nayumiwandi.workers.dev"
                 }
@@ -262,7 +295,7 @@
         },
         {
             "type": "vmess",
-            "tag": "shiroko vmess",
+            "tag": "shiroko vmess Linode",
             "tcp_fast_open": true,
             "server": "support.vidio.com",
             "server_port": 443,
@@ -277,7 +310,7 @@
             },
             "transport": {
                 "type": "ws",
-                "path": "/ID",
+                "path": "/172.232.234.155-74",
                 "headers": {
                     "Host": "shiroko.shirokoyumi.workers.dev"
                 }
@@ -303,48 +336,8 @@
             }
         },
         {
-            "type": "vless",
-            "tag": "ID 1 Amazon miriela",
-            "tcp_fast_open": true,
-            "server": "nontontv.vidio.com",
-            "server_port": 443,
-            "uuid": "c37bed94-0c0b-40f8-8a0c-15a45a22e754",
-            "tls": {
-                "enabled": true,
-                "server_name": "miriela.mayumidev.workers.dev",
-                "insecure": false,
-                "disable_sni": false
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/43.218.77.16-1443",
-                "headers": {
-                    "Host": "miriela.mayumidev.workers.dev"
-                }
-            }
-        },
-        {
-            "type": "trojan",
-            "tag": "ID PusatMedia megumin",
-            "tcp_fast_open": true,
-            "server": "nontontv.vidio.com",
-            "server_port": 443,
-            "password": "57a70726-3aeb-46f2-8e6a-bec05ad5bfe5",
-            "tls": {
-                "enabled": true,
-                "server_name": "megumin.kazanami.workers.dev"
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/103.6.207.108-8080",
-                "headers": {
-                    "Host": "megumin.kazanami.workers.dev"
-                }
-            }
-        },
-        {
             "type": "vmess",
-            "tag": "ID Amazoncom layla",
+            "tag": "ID Amazon layla",
             "server": "nontontv.vidio.com",
             "tcp_fast_open": true,
             "server_port": 443,
@@ -360,29 +353,6 @@
             "transport": {
                 "type": "ws",
                 "path": "/43.218.77.16-443",
-                "headers": {
-                    "Host": "layla.mayumiyui.my.id"
-                }
-            }
-        },
-        {
-            "type": "vmess",
-            "tag": "ID Rotasi",
-            "server": "nontontv.vidio.com",
-            "tcp_fast_open": true,
-            "server_port": 443,
-            "uuid": "32ec8217-99f1-404c-90d0-7234500aebdd",
-            "security": "zero",
-            "tls": {
-                "enabled": true,
-                "server_name": "layla.mayumiyui.my.id",
-                "utls": {
-                    "enabled": true
-                }
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/ID",
                 "headers": {
                     "Host": "layla.mayumiyui.my.id"
                 }
@@ -490,6 +460,65 @@
                 "path": "/183.171.200.162-443",
                 "headers": {
                     "Host": "nontontv.vidio.com.mayumi.biz.id"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Lightnode Limited ID",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "password": "3e06c18b-4ae6-41a2-9b79-e5b6077e5120",
+            "tls": {
+                "enabled": true,
+                "server_name": "nontontv.vidio.com.mayumi.biz.id"
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/154.90.48.27-56362",
+                "headers": {
+                    "Host": "nontontv.vidio.com.mayumi.biz.id"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Linode Shark ID",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "password": "74fffd2c-b718-4d9f-82ec-103f1cf6fa27",
+            "tls": {
+                "enabled": true,
+                "server_name": "yumicftigarun.web.id"
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/172.232.234.155-74",
+                "headers": {
+                    "Host": "yumicftigarun.web.id"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Alibaba Shark SG",
+            "tcp_fast_open": true,
+            "server": "nontontv.vidio.com",
+            "server_port": 443,
+            "uuid": "04a950e4-5167-4bdc-a76e-e7ea54e5633b",
+            "tls": {
+                "enabled": true,
+                "server_name": "yumicftigarun.web.id",
+                "insecure": false,
+                "disable_sni": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/8.219.126.137-491",
+                "headers": {
+                    "Host": "yumicftigarun.web.id"
                 }
             }
         }
