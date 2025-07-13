@@ -274,7 +274,7 @@
             "type": "vmess",
             "tag": "siren nayumi vmess",
             "tcp_fast_open": true,
-            "server": "plus-store.naver.com"",
+            "server": "plus-store.naver.com",
             "server_port": 443,
             "uuid": "9faf8d4c-aab1-4806-bb6f-1ab1bfa05ea4",
             "security": "zero",
@@ -297,7 +297,7 @@
             "type": "vmess",
             "tag": "shiroko vmess Linode",
             "tcp_fast_open": true,
-            "server": "plus-store.naver.com"",
+            "server": "plus-store.naver.com",
             "server_port": 443,
             "uuid": "6affea6f-a412-44fa-8a9e-f2f1fb1f4fba",
             "security": "zero",
@@ -320,7 +320,7 @@
             "type": "trojan",
             "tag": "SG Shiroko Yumi",
             "tcp_fast_open": true,
-            "server": "plus-store.naver.com"",
+            "server": "plus-store.naver.com",
             "server_port": 443,
             "password": "6affea6f-a412-44fa-8a9e-f2f1fb1f4fba",
             "tls": {
@@ -338,7 +338,7 @@
         {
             "type": "vmess",
             "tag": "ID Amazon layla",
-            "server": "plus-store.naver.com"",
+            "server": "plus-store.naver.com",
             "tcp_fast_open": true,
             "server_port": 443,
             "uuid": "32ec8217-99f1-404c-90d0-7234500aebdd",
@@ -362,7 +362,7 @@
             "type": "trojan",
             "tag": "ID MITRA VISIONER Alya",
             "tcp_fast_open": true,
-            "server": "plus-store.naver.com"",
+            "server": "plus-store.naver.com",
             "server_port": 443,
             "password": "4ed8580c-8262-460a-8037-deee874c65be",
             "tls": {
@@ -381,7 +381,7 @@
             "type": "vless",
             "tag": "SG Eons Data Alya",
             "tcp_fast_open": true,
-            "server": "plus-store.naver.com"",
+            "server": "plus-store.naver.com",
             "server_port": 443,
             "uuid": "e86eeb74-e507-421c-8915-e3aa91a6510b",
             "tls": {
@@ -402,7 +402,7 @@
             "type": "vless",
             "tag": "Oracle Corporation(JP)",
             "tcp_fast_open": true,
-            "server": "plus-store.naver.com"",
+            "server": "plus-store.naver.com",
             "server_port": 443,
             "uuid": "3e06c18b-4ae6-41a2-9b79-e5b6077e5120",
             "tls": {
@@ -423,7 +423,7 @@
             "type": "vmess",
             "tag": "RackNerd LLC (US)",
             "tcp_fast_open": true,
-            "server": "plus-store.naver.com"",
+            "server": "plus-store.naver.com",
             "server_port": 443,
             "uuid": "3e06c18b-4ae6-41a2-9b79-e5b6077e5120",
             "security": "zero",
@@ -446,7 +446,7 @@
             "type": "vless",
             "tag": "Celcom Axiata Berhad (MY)",
             "tcp_fast_open": true,
-            "server": "plus-store.naver.com"",
+            "server": "plus-store.naver.com",
             "server_port": 443,
             "uuid": "3e06c18b-4ae6-41a2-9b79-e5b6077e5120",
             "tls": {
@@ -467,7 +467,7 @@
             "type": "trojan",
             "tag": "Lightnode Limited ID",
             "tcp_fast_open": true,
-            "server": "plus-store.naver.com"",
+            "server": "plus-store.naver.com",
             "server_port": 443,
             "password": "3e06c18b-4ae6-41a2-9b79-e5b6077e5120",
             "tls": {
@@ -486,7 +486,7 @@
             "type": "trojan",
             "tag": "Linode Shark ID",
             "tcp_fast_open": true,
-            "server": "plus-store.naver.com"",
+            "server": "plus-store.naver.com",
             "server_port": 443,
             "password": "74fffd2c-b718-4d9f-82ec-103f1cf6fa27",
             "tls": {
@@ -505,7 +505,7 @@
             "type": "vless",
             "tag": "Alibaba Shark SG",
             "tcp_fast_open": true,
-            "server": "plus-store.naver.com"",
+            "server": "plus-store.naver.com",
             "server_port": 443,
             "uuid": "04a950e4-5167-4bdc-a76e-e7ea54e5633b",
             "tls": {
