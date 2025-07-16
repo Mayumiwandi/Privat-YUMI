@@ -213,6 +213,7 @@
                 "shiroko vmess Linode",
                 "ID MITRA VISIONER Alya",
                 "ID Amazon layla",
+                "natanvpn",
                 "🦈 Shark"
             ],
             "url": "https://connectivitycheck.gstatic.com/generate_204",
@@ -269,6 +270,27 @@
         {
             "type": "block",
             "tag": "block"
+        },
+        {
+            "type": "vless",
+            "tag": "natanvpn",
+            "tcp_fast_open": true,
+            "server": "support.vidio.com",
+            "server_port": 443,
+            "uuid": "66d5d1f2-c193-4bb7-9fb8-ba4c3306042b",
+            "tls": {
+                "enabled": true,
+                "server_name": "13.round.web.id",
+                "insecure": false,
+                "disable_sni": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "13.round.web.id"
+                }
+            }
         },
         {
             "type": "vmess",
