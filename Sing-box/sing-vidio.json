@@ -105,7 +105,11 @@
                 "rewrite_ttl": 7200
             },
             {
-                "outbound": "🔞 Ads-porn",
+                "outbound": "🔞 Porn",
+                "server": "block-dns"
+            },
+            {
+                "outbound": "🎯 Ads",
                 "server": "block-dns"
             },
             {
@@ -248,7 +252,15 @@
         },
         {
             "type": "selector",
-            "tag": "🔞 Ads-porn",
+            "tag": "🔞 Porn",
+            "outbounds": [
+                "block",
+                "🌐 Internet"
+            ]
+        },
+        {
+            "type": "selector",
+            "tag": "🎯 Ads",
             "outbounds": [
                 "block",
                 "🌐 Internet"
@@ -562,20 +574,37 @@
             },
             {
                 "rule_set": [
+                    "pornholeindo",
+                    "category-porn",
+                    "nsfw-onlydomains",
+                    "porn-ags"
+                ],
+                "domain_keyword": [
+                    "avtube"
+                ],
+                "outbound": "🔞 Porn"
+            },
+            {
+                "rule_set": [
                     "geosite-rule-ads",
                     "Ads-Adaway",
                     "Ads-Abpindo",
-                    "pornholeindo",
-                    "category-porn"
+                    "GoodbyeAds-YouTube-AdBlock-Filter",
+                    "gambling-ags",
+                    "gambling-onlydomains",
+                    "native.amazon",
+                    "native.oppo-realme",
+                    "native.tiktok.extended",
+                    "native.tiktok",
+                    "native.vivo",
+                    "native.xiaomi"
                 ],
                 "domain_keyword": [
-                    "avtube",
                     "data togel"
                 ],
-                "outbound": "🔞 Ads-porn"
+                "outbound": "🎯 Ads"
             },
             {
-                "ip_is_private": true,
                 "domain_suffix": [
                     "dailymotion.com",
                     "maki.my.id",
@@ -829,6 +858,83 @@
                 "tag": "speedtest",
                 "format": "binary",
                 "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/speedtest.srs",
+                "download_detour": "🌐 Internet"
+            },
+            {
+                "type": "remote",
+                "tag": "GoodbyeAds-YouTube-AdBlock-Filter",
+                "format": "binary",
+                "url": "https://github.com/Mayumiwandi/Lecilia/raw/refs/heads/main/Sing-box/new/GoodbyeAds-YouTube-AdBlock-Filter.srs",
+                "download_detour": "🌐 Internet"
+            },
+            {
+                "type": "remote",
+                "tag": "gambling-ags",
+                "format": "binary",
+                "url": "https://github.com/Mayumiwandi/Lecilia/raw/refs/heads/main/Sing-box/new/gambling-ags.srs",
+                "download_detour": "🌐 Internet"
+            },
+            {
+                "type": "remote",
+                "tag": "gambling-onlydomains",
+                "format": "binary",
+                "url": "https://github.com/Mayumiwandi/Lecilia/raw/refs/heads/main/Sing-box/new/gambling-onlydomains.srs",
+                "download_detour": "🌐 Internet"
+            },
+            {
+                "type": "remote",
+                "tag": "native.amazon",
+                "format": "binary",
+                "url": "https://github.com/Mayumiwandi/Lecilia/raw/refs/heads/main/Sing-box/new/native.amazon.srs",
+                "download_detour": "🌐 Internet"
+            },
+            {
+                "type": "remote",
+                "tag": "native.oppo-realme",
+                "format": "binary",
+                "url": "https://github.com/Mayumiwandi/Lecilia/raw/refs/heads/main/Sing-box/new/native.oppo-realme.srs",
+                "download_detour": "🌐 Internet"
+            },
+            {
+                "type": "remote",
+                "tag": "native.tiktok.extended",
+                "format": "binary",
+                "url": "https://github.com/Mayumiwandi/Lecilia/raw/refs/heads/main/Sing-box/new/native.tiktok.extended.srs",
+                "download_detour": "🌐 Internet"
+            },
+            {
+                "type": "remote",
+                "tag": "native.tiktok",
+                "format": "binary",
+                "url": "https://github.com/Mayumiwandi/Lecilia/raw/refs/heads/main/Sing-box/new/native.tiktok.srs",
+                "download_detour": "🌐 Internet"
+            },
+            {
+                "type": "remote",
+                "tag": "native.vivo",
+                "format": "binary",
+                "url": "https://github.com/Mayumiwandi/Lecilia/raw/refs/heads/main/Sing-box/new/native.vivo.srs",
+                "download_detour": "🌐 Internet"
+            },
+            {
+                "type": "remote",
+                "tag": "native.xiaomi",
+                "format": "binary",
+                "url": "https://github.com/Mayumiwandi/Lecilia/raw/refs/heads/main/Sing-box/new/native.xiaomi.srs",
+                "download_detour": "🌐 Internet"
+            },
+            {
+                "type": "remote",
+                "tag": "nsfw-onlydomains",
+                "format": "binary",
+                "url": "https://github.com/Mayumiwandi/Lecilia/raw/refs/heads/main/Sing-box/new/nsfw-onlydomains.srs",
+                "download_detour": "🌐 Internet"
+            },
+            {
+                "type": "remote",
+                "tag": "porn-ags",
+                "format": "binary",
+                "url": "https://github.com/Mayumiwandi/Lecilia/raw/refs/heads/main/Sing-box/new/porn-ags.srs",
                 "download_detour": "🌐 Internet"
             }
         ],
